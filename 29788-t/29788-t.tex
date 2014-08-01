@@ -1,0 +1,3861 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                                                                         %
+% Project Gutenberg's Four Lectures on Mathematics, by Jacques Hadamard   %
+%                                                                         %
+% This eBook is for the use of anyone anywhere at no cost and with        %
+% almost no restrictions whatsoever.  You may copy it, give it away or    %
+% re-use it under the terms of the Project Gutenberg License included     %
+% with this eBook or online at www.gutenberg.org                          %
+%                                                                         %
+%                                                                         %
+% Title: Four Lectures on Mathematics                                     %
+%        Delivered at Columbia University in 1911                         %
+%                                                                         %
+% Author: Jacques Hadamard                                                %
+%                                                                         %
+% Release Date: August 24, 2009 [EBook #29788]                            %
+%                                                                         %
+% Language: English                                                       %
+%                                                                         %
+% Character set encoding: ISO-8859-1                                      %
+%                                                                         %
+% *** START OF THIS PROJECT GUTENBERG EBOOK FOUR LECTURES ON MATHEMATICS ***
+%                                                                         %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+\def\ebook{29788}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                  %%
+%% Packages and substitutions:                                      %%
+%%                                                                  %%
+%% book:     Required.                                              %%
+%% inputenc: Standard DP encoding. Required.                        %%
+%%                                                                  %%
+%% fix-cm:   Variable-sized font scaling. Required.                 %%
+%%                                                                  %%
+%% ifthen:   Logical conditionals. Required.                        %%
+%%                                                                  %%
+%% amsmath:  AMS mathematics enhancements. Required.                %%
+%% amssymb:  Additional mathematical symbols. Required.             %%
+%%                                                                  %%
+%% alltt:    Fixed-width font environment. Required.                %%
+%%                                                                  %%
+%% fancyhdr: Enhanced running headers and footers. Required.        %%
+%%                                                                  %%
+%% graphicx: Standard interface for graphics inclusion. Required.   %%
+%%                                                                  %%
+%% geometry: Enhanced page layout package. Required.                %%
+%% hyperref: Hypertext embellishments for pdf output. Required.     %%
+%%                                                                  %%
+%%                                                                  %%
+%% Producer's Comments:                                             %%
+%%                                                                  %%
+%%   A short, straightforward text.                                 %%
+%%                                                                  %%
+%%                                                                  %%
+%% Compilation Flags:                                               %%
+%%                                                                  %%
+%%   The following behaviors may be controlled by boolean flags.    %%
+%%                                                                  %%
+%%   ForPrinting (true by default):                                 %%
+%%   Compile a print-optimized PDF file. Set to false for screen-   %%
+%%   optimized file (pages cropped, one-sided, blue hyperlinks).    %%
+%%                                                                  %%
+%%   FixTypos (true by default):                                    %%
+%%   Effect corrections found during digitization.                  %%
+%%   Corrections and notes may be found in this source file by      %%
+%%   searching for the ``\Typo'' macro and for ``** TN''.           %%
+%%                                                                  %%
+%%                                                                  %%
+%% Things to Check:                                                 %%
+%%                                                                  %%
+%% Spellcheck: .................................. OK                %%
+%% Smoothreading pool: ......................... yes                %%
+%%                                                                  %%
+%% lacheck: ..................................... OK                %%
+%%   About 30 harmless false positives                              %%
+%%                                                                  %%
+%% PDF pages: 76 (if ForPrinting set to true)                       %%
+%% PDF page size: US Letter                                         %%
+%% PDF bookmarks: created, point to ToC entries                     %%
+%% PDF document info: filled in                                     %%
+%% Images: 8 pdf diagrams, 1 png (publisher's device)               %%
+%%                                                                  %%
+%% Summary of log file:                                             %%
+%% * Three overfull hboxes (largest ~1.7pt too wide, in adverts).   %%
+%% * One underfull vbox on title page, no visible effect.           %%
+%%                                                                  %%
+%%                                                                  %%
+%% Compile History:                                                 %%
+%%                                                                  %%
+%% August, 2009: adhere (Andrew D. Hwang)                           %%
+%%               texlive2007, GNU/Linux                             %%
+%%                                                                  %%
+%% Command block:                                                   %%
+%%                                                                  %%
+%%     pdflatex x2 (Run pdflatex twice)                             %%
+%%                                                                  %%
+%%                                                                  %%
+%% August 2009: pglatex.                                            %%
+%%   Compile this project with:                                     %%
+%%   pdflatex 29788-t.tex ..... TWO times                           %%
+%%                                                                  %%
+%%   pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)                 %%
+%%                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listfiles
+\documentclass[12pt,leqno]{book}[2005/09/16]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[latin1]{inputenc}[2006/05/05] %% DP standard encoding
+
+\usepackage{fix-cm}[2006/03/24]%
+
+\usepackage{ifthen}[2001/05/26]  %% Logical conditionals
+
+\usepackage{amsmath}[2000/07/18] %% Displayed equations
+\usepackage{amssymb}[2002/01/22] %% and additional symbols
+
+\usepackage{alltt}[1997/06/16]   %% boilerplate, credits, license
+
+\usepackage{graphicx}[1999/02/16]%% For diagrams
+
+% for running heads; no package date available
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%             Conditional compilation switches            %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Effect corrections found while digitizing this book
+\newboolean{FixTypos}
+
+% COMMENT the following line to retain typos in the original
+\setboolean{FixTypos}{true}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%        Set up PRINTING (default) or SCREEN VIEWING      %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ForPrinting=true (default)           false
+% Letterpaper                          Cropped pages
+% Asymmetric margins                   Symmetric margins
+% Black hyperlinks                     Blue hyperlinks
+\newboolean{ForPrinting}
+
+%% COMMENT the next line for a SCREEN-OPTIMIZED VERSION of the text %%
+\setboolean{ForPrinting}{true}
+
+%% Initialize values to ForPrinting=false
+\newcommand{\Margins}{hmarginratio=1:1}     % Symmetric margins
+\newcommand{\HLinkColor}{blue}              % Hyperlink color
+\newcommand{\PDFPageLayout}{SinglePage}
+\newcommand{\TransNote}{Transcriber's Notes}
+\newcommand{\TransNoteCommon}
+{
+\ifthenelse{\boolean{FixTypos}}
+  {In \hyperref[chapter:4]{Lecture~IV}, equation~\Eqno{(2)} on
+    \Pageref{44}, and equation~\Eqno{(3)} with its surrounding text on
+    \Pageref{49}, are reproduced faithfully from the original.
+    \bigskip
+
+    Except as noted above, minor typographical corrections and
+    regularizations of spelling and mathematical notation have been
+    made without comment. This ebook may be easily recompiled with
+    errors and irregularities retained. Please consult the
+    preamble of the \LaTeX\ source file for instructions.}
+  {Every effort has been made to reproduce the text of the original
+    book faithfully, including inconsistencies of spelling,
+    punctuation, sectioning, and mathematical notation. This ebook may
+    be easily recompiled with minor corrections effected. Please consult
+    the preamble of the \LaTeX\ source file for instructions.}
+  \bigskip
+
+  Figures may have been moved slightly with respect to the surrounding
+  text.
+  \bigskip
+}
+
+\newcommand{\TransNoteText}
+{
+  \TransNoteCommon
+
+  This PDF file is formatted for screen viewing, but may be easily
+  formatted for printing. Again, please consult the preamble of the
+  source file for instructions.
+}
+
+%% Re-set if ForPrinting=true
+\ifthenelse{\boolean{ForPrinting}}{%
+  \renewcommand{\Margins}{hmarginratio=2:3} % Asymmetric margins
+  \renewcommand{\HLinkColor}{black}         % Hyperlink color
+  \renewcommand{\PDFPageLayout}{TwoPageRight}
+  \renewcommand{\TransNoteText}{%
+  \TransNoteCommon
+
+  This PDF file is formatted for printing, but may be easily formatted
+  for screen viewing. Again, please see the preamble of the source
+  file for instructions.
+  }
+}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  End of PRINTING/SCREEN VIEWING code; back to packages  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set text block size
+\usepackage[body={4.375in,7.35in},\Margins]{geometry}[2002/07/08]
+
+\providecommand{\ebook}{00000}    % Overridden during white-washing
+\usepackage[pdftex,
+  hyperref,
+  hyperfootnotes=false,
+  pdftitle={The Project Gutenberg eBook \#\ebook: Four Lectures on Mathematics},
+  pdfauthor={Jacques Hadamard},
+  pdfkeywords={Andrew D. Hwang, Brenda Lewis,
+               Project Gutenberg Online Distributed Proofreading Team,
+               Cornell University Historical Mathematical Monographs collection},
+  pdfstartview=Fit,    % default value
+  pdfstartpage=1,      % default value
+  pdfpagemode=UseNone, % default value
+  bookmarks=true,      % default value
+  linktocpage=false,   % default value
+  pdfpagelayout=\PDFPageLayout,
+  pdfdisplaydoctitle,
+  pdfpagelabels=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  colorlinks=true,
+  linkcolor=\HLinkColor]{hyperref}[2007/02/07]
+
+%%%% Re-crop screen-formatted version, omit blank verso pages %%%%
+\ifthenelse{\boolean{ForPrinting}}
+  {}
+  {\hypersetup{pdfpagescrop = 130 120 482 750}
+  % If ForPrinting=false, don't skip to recto
+  \renewcommand{\cleardoublepage}{\clearpage}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMMANDS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Fixed-width environment to format PG boilerplate %%%%
+% 9.2pt leaves no overfull hbox at 80 char line width
+\newenvironment{PGtext}{%
+\begin{alltt}
+\fontsize{9.2}{10.5}\ttfamily\selectfont}%
+{\end{alltt}}
+
+
+% Equation labels
+\newcommand{\Tag}[1]{\tag*{\ensuremath{#1}}}
+\newcommand{\Eqno}[1]{{\ensuremath{#1}}}
+
+% Cross-referencing: anchors
+\newcommand{\Pagelabel}[1]
+  {\phantomsection\label{page:#1}}
+
+\newcommand{\Figlabel}[1]
+  {\phantomsection\label{fig:#1}}
+
+% and links
+\newcommand{\Pageref}[1]
+  {\hyperref[page:#1]{p.~\pageref{page:#1}}}
+
+\newcommand{\Figref}[1]%
+  {\hyperref[fig:#1]{\texorpdfstring{Fig.~#1}{Fig #1}}}
+
+\newcommand{\Noteref}[1]%
+  {\hyperref[appnote:#1]{\texorpdfstring{Note~#1}{Note #1}}}
+
+\newcommand{\Chapter}[2]
+  {
+    % Clear stale heading on previous page
+    \ifthenelse{\boolean{ForPrinting}}{\fancyhead[RE]{}}{}%
+    \cleardoublepage
+    \thispagestyle{empty}
+    \section*{\centering\normalfont\normalsize\scshape #1\\[12pt] #2}
+    \pdfbookmark[0]{#1}{#1}%
+    \setcounter{footnote}{0}%
+
+    \ifthenelse{\boolean{ForPrinting}}%
+               {\fancyhead[LE,RO]{\thepage}}
+               {\fancyhead[R]{\thepage}}
+  }
+
+\newcommand{\Section}[2]
+  {\subsection*{\centering\normalfont\normalsize#1~\itshape #2}}
+
+% Use fix-cm to get extremely tiny print for title page
+\newcommand{\Micro}{\fontsize{4.5}{5}\selectfont}%
+
+
+\newlength{\TmpLen}
+\setlength{\TmpLen}{4.5in}
+
+\newlength{\Adindent}
+\setlength{\Adindent}{3em}
+
+\newcommand{\Advert}[5]
+  {
+    \stretchyspace%
+    \footnotesize%
+    \par\noindent\hangindent\Adindent \hangafter 1
+    #1 \textbf{#2} By \textsc{#3}, #4
+    \ifthenelse{\not\equal{#5}{}}{\\ \scriptsize\textbf{#5}}{}
+    \smallskip
+  }
+
+\newcommand{\Rules}{%
+  \noindent\smash{\rule{\linewidth}{0.5pt}}%
+  \vspace*{-11pt}
+  \smash{\rule{\linewidth}{0.5pt}}%
+}
+
+\newcommand{\Heading}[1]{{\footnotesize #1}}
+
+\hyphenation{Had-a-mard}
+\DeclareMathSizes{12}{12}{9}{7}
+\DeclareInputMath{183}{\cdot}
+
+\newcommand{\stretchyspace}
+{
+  \spaceskip0.375em plus 0.25em minus 0.125em
+  \setlength{\parskip}{0.25ex plus 0.25ex minus 0.25ex}
+}
+
+\newcommand{\Graphic}[3]{%
+  \begin{center}
+    \includegraphics[width=#2]{./images/#3.pdf}%
+  \end{center}%
+  \Figlabel{#1}%
+}
+
+\newcommand{\Figure}[3]{%
+  \begin{figure*}[htbp]%
+    \centering
+    \includegraphics[width=#2]{./images/#3.pdf}%
+    \Figlabel{#1}%
+  \end{figure*}%
+}
+
+% Need to add \hyperref
+\newcommand{\TocPrep}{\noindent\hangindent\TmpLen \hangafter 1}
+\newcommand{\TocBox}[2]
+  {\hyperref[chapter:#1]{\texorpdfstring{\makebox[0.825in][l]{#2}}{#2}}}
+
+\newcommand{\TitlePage}[1][]
+{
+  \makebox[0pt][c]{%
+    \begin{minipage}{\TmpLen}
+      \centering
+      COLUMBIA UNIVERSITY IN THE CITY OF NEW YORK
+
+      {\footnotesize PUBLICATION NUMBER FIVE \\
+        OF THE ERNEST KEMPTON ADAMS FUND FOR PHYSICAL RESEARCH \\
+        ESTABLISHED DECEMBER~17{\footnotesize TH}, 1904}
+
+      \Rules \\[12pt]
+
+      \textbf{\huge FOUR LECTURES \\[18pt]
+        ON MATHEMATICS} \\[24pt]
+
+      DELIVERED AT COLUMBIA UNIVERSITY \\
+      IN 1911 \\[36pt]
+
+      {\footnotesize BY} \\
+      J. HADAMARD\\[8pt]
+
+      \makebox[0pt][c]{\Micro%
+        MEMBER OF THE INSTITUTE, PROFESSOR IN THE COLLÉGE DE FRANCE AND IN THE ÉCOLE POLYTECHNIQUE,}\\[-4pt]
+      \makebox[0pt][c]{\Micro%
+        LECTURER IN MATHEMATICS AND MATHEMATICAL PHYSICS IN COLUMBIA UNIVERSITY FOR 1911}\\[48pt]
+
+      \includegraphics[width=1.25in]{./images/pub_device.png}\\[24pt]
+
+      NEW YORK \\[6pt]
+      \ifthenelse{\equal{#1}{}}
+      {COLUMBIA UNIVERSITY PRESS}
+      {COLUMBIA UNIVERSITY PRESS \\[6pt] #1}
+  \end{minipage}}
+}
+
+
+
+\DeclareMathOperator{\Div}{div}
+\renewcommand{\div}{\Div}
+
+\newcommand{\Derivative}[4][]
+{\ifthenelse{\equal{#1}{}}
+  {\dfrac{#4 #2}{#4 #3}}
+  {\dfrac{#4^{#1} #2}{#4 #3^{#1}}}}
+
+\newcommand{\pderiv}[3][]{\Derivative[#1]{#2}{#3}{\partial}}
+\newcommand{\deriv}[3][]{\Derivative[#1]{#2}{#3}{d}}
+
+
+% Mediates corrections; search for \Typo for list of corrections
+\newcommand{\Typo}[2]{\ifthenelse{\boolean{FixTypos}}{#2}{#1}}
+
+
+\begin{document}%%%%% BEGIN DOCUMENT %%%%%
+
+\pagestyle{empty}
+\pagenumbering{Alph}
+\phantomsection
+\pdfbookmark[-1]{Front Matter}{Front Matter}
+
+%%%% PG BOILERPLATE %%%%
+\Pagelabel{PGBoilerplate}
+\phantomsection
+\pdfbookmark[0]{PG Boilerplate}{Project Gutenberg Boilerplate}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\begin{PGtext}
+Project Gutenberg's Four Lectures on Mathematics, by Jacques Hadamard
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
+
+
+Title: Four Lectures on Mathematics
+       Delivered at Columbia University in 1911
+
+Author: Jacques Hadamard
+
+Release Date: August 24, 2009 [EBook #29788]
+
+Language: English
+
+Character set encoding: ISO-8859-1
+
+*** START OF THIS PROJECT GUTENBERG EBOOK FOUR LECTURES ON MATHEMATICS ***
+\end{PGtext}
+\end{minipage}
+\end{center}
+
+\clearpage
+
+
+%%%% Credits and transcriber's note %%%%
+\begin{center}
+\begin{minipage}{\textwidth}
+\begin{PGtext}
+Produced by Andrew D. Hwang, Brenda Lewis and the Online
+Distributed Proofreading Team at http://www.pgdp.net (This
+file was produced from images from the Cornell University
+Library: Historical Mathematics Monographs collection.)
+\end{PGtext}
+\end{minipage}
+\end{center}
+\vfill
+
+\begin{minipage}{0.85\textwidth}
+\small
+\pdfbookmark[0]{\TransNote}{\TransNote}
+\subsection*{\centering\normalfont\scshape%
+\normalsize\MakeLowercase{\TransNote}}%
+
+\raggedright
+\TransNoteText
+\end{minipage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FRONT MATTER %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+
+\pagenumbering{roman}
+\pagestyle{empty}
+
+\normalsize
+
+%% -----File: 001.png---Folio xx-------
+
+\pagestyle{empty}
+\enlargethispage{0.25in}
+\begin{center}
+\TitlePage[1915]
+\end{center}
+\clearpage
+
+%% -----File: 002.png---Folio xx-------
+%[Blank Page]
+%% -----File: 003.png---Folio xx-------
+\iffalse
+\cleardoublepage
+\enlargethispage{2in}
+\begin{center}
+\TitlePage
+\end{center}
+\fi
+
+%% -----File: 004.png---Folio xx-------
+\begin{center}
+\textsc{Copyright 1915 by Columbia University Press}
+\vfill
+
+{\sffamily\tiny PRESS OF \\
+THE NEW ERA PRINTING COMPANY \\[-6pt]
+LANCASTER, PA.}\\[8pt]
+{\footnotesize 1915}
+
+\end{center}
+\clearpage
+
+%% -----File: 005.png---Folio xx-------
+
+\footnotesize%
+On the seventeenth day of December, nineteen hundred and four, Edward Dean
+Adams, of New York, established in Columbia University ``The Ernest Kempton
+Adams Fund for Physical Research'' as a memorial to his son, Ernest Kempton
+Adams, who received the degrees of Electrical Engineering in 1897 and Master of
+Arts in 1898, and who devoted his life to scientific research. The income of this
+fund is, by the terms of the deed of gift, to be devoted to the maintenance of a
+research fellowship and to the publication and distribution of the results of scientific
+research on the part of the fellow. A generous interpretation of the terms of the
+deed on the part of Mr.~Adams and of the Trustees of the University has made it
+possible to issue these lectures as a publication of the Ernest Kempton Adams Fund.
+
+\Rules
+
+\normalsize
+\begin{center}
+\textbf{Publications of the \\
+Ernest Kempton Adams Fund for Physical Research}
+
+\rule{1.5in}{0.5pt}
+\end{center}
+
+\Advert{Number One.}{Fields of Force.}{Vilhelm Friman Koren Bjerknes}{Professor of Physics
+in the University of Stockholm. A course of lectures delivered at Columbia University,
+1905-6.}
+{Hydrodynamic fields. Electromagnetic fields. Analogies between the two. Supplementary lecture on
+application of hydrodynamics to meteorology. 160~pp.}
+
+\Advert{Number Two.}{The Theory of Electrons and its Application to the Phenomena of Light and
+Radiant Heat.}{H.~A. Lorentz}{Professor of Physics in the University of Leyden.
+A course of lectures delivered at Columbia University, 1906--7. With added notes.
+332~pp. Edition exhausted. Published in another edition by Teubner.}{}
+
+\Advert{Number Three.}{Eight Lectures on Theoretical Physics.}{Max Planck}{Professor of
+Theoretical Physics in the University of Berlin. A course of lectures delivered at
+Columbia University in 1909, translated by \textsc{A.~P. Wills}, Professor of Mathematical
+Physics in Colum\-bia University.}
+{Introduction: Reversibility and Irreversibility. Thermodynamic equilibrium in dilute solutions.
+Atomistic theory of matter. Equation of state of a monatomic gas. Radiation, electrodynamic theory.
+Statistical theory. Principle of least work. Principle of relativity. 130~pp.}
+
+\Advert{Number Four.}{Graphical Methods.}{C.~Runge}{Professor of Applied Mathematics in the
+University of Göttingen. A course of lectures delivered at Columbia University,
+1909--10.}
+{Graphical calculation. The graphical representation of functions of one or more independent variables.
+The graphical methods of the differential and integral calculus. 148~pp.}
+
+\Advert{Number Five.}{Four Lectures on Mathematics.}{J.~Hadamard}{Member of the Institute,
+Professor in the \Typo{Collége}{Collège} de France and in the École Polytechnique. A course of lectures
+delivered at Columbia University in 1911.}
+{Linear partial differential equations and boundary conditions. Contemporary researches in differential
+and integral equations. Analysis situs. Elementary solutions of partial differential equations
+and Green's functions. 53~pp.}
+
+\Advert{Number Six.}{Researches in Physical Optics, Part~I, with especial reference to the radiation
+of electrons.}{R.~W. Wood}{Adams Research Fellow, 1913, Professor of Experimental
+Physics in the Johns Hopkins University. 134~pp. With 10~plates. Edition exhausted.}{}
+
+\Advert{Number Seven.}{Neuere Probleme der theoretischen Physik.}{W.~Wien}{Professor of
+Physics in the University of Würzburg. A course of six lectures delivered at Columbia
+University in 1913.}
+{Introduction: Derivation of the radiation equation. Specific heat theory of Debye. Newer radiation
+theory of Planck. Theory of electric conduction in metals, electron theory for metals. The Einstein
+fluctuations. Theory of Röntgen rays. Method of determining wave length. Photo-electric effect and
+emission of light by canal ray particles. 76~pp.}
+
+\par\footnotesize%
+These publications are distributed under the Adams Fund to many libraries
+and to a limited number of individuals, but may also be bought at cost from the
+Columbia University Press.
+\normalsize
+
+%% -----File: 006.png---Folio xx-------
+%[Blank Page]
+%% -----File: 007.png---Folio xx-------
+
+\Chapter{PREFACE}{}
+\label{preface}
+\fancyhead{}
+
+The ``Saturday Morning Lectures'' delivered by Professor
+Hadamard at Columbia University in the fall of
+1911, on subjects that extend into both mathematics and
+physics, were taken down by Dr.~A.~N. Goldsmith of the
+College of the City of New York, and after revision by the
+author in 1914 are now published for the benefit of a wider
+audience. The author has requested that his thanks be expressed
+in this place to Dr.~Goldsmith for writing out and
+revising the lectures, and to Professor Kasner of Columbia
+for reading the proofs.
+\cleardoublepage
+
+%% -----File: 008.png---Folio xx-------
+%[Blank Page]
+%% -----File: 009.png---Folio xx-------
+
+\Chapter{CONTENTS}{}
+\label{contents}
+
+\setlength{\TmpLen}{1in}
+
+\TocPrep
+\TocBox{1}{Lecture I.} The Definition of Solutions of Linear Partial
+Differential Equations by Boundary Conditions.
+\medskip
+
+\TocPrep
+\TocBox{2}{Lecture II.} Contemporary Researches in Differential
+Equations, Integral Equations, and Integro-Diff\-er\-en\-tial
+Equations.
+\medskip
+
+\TocPrep
+\TocBox{3}{Lecture III.} Analysis Situs in Connection with Corres\-pond\-ences
+and Differential Equations.
+\medskip
+
+\TocPrep
+\TocBox{4}{Lecture IV.} Elementary Solutions of Partial Differential
+Equations and Green's Functions.
+
+
+%% -----File: 010.png---Folio xx-------
+%[Blank Page]
+%% -----File: 011.png---Folio 1-------
+
+\mainmatter
+\pdfbookmark[-1]{Main Matter}{Main Matter}
+\pagenumbering{arabic}
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyfoot{}
+
+\stretchyspace
+
+
+\Chapter{LECTURE I}{The Determination of Solutions of Linear Partial Differential
+Equations by Boundary Conditions}
+\label{chapter:1}
+\fancyhead[CE]{\Heading{FIRST LECTURE}}
+\fancyhead[CO]{\Heading{LINEAR PARTIAL DIFFERENTIAL EQUATIONS}}
+
+% [** PP: Presumed \Section{1.}]
+In this lecture we shall limit ourselves to the consideration of
+linear partial differential equations of the second order.
+
+It is natural that general solutions of these equations were
+first sought, but such solutions have proven to be capable of
+successful employment only in the case of ordinary differential
+equations. In the case of partial differential equations employed
+in connection with physical problems, their use must be given
+up in most circumstances, for two reasons: first, it is in general
+impossible to get the general solution or general integral;
+and second, it is in general of no use even when it is obtained.
+
+Our problem is to get a function which satisfies not only the
+differential equation but also other conditions as well; and for
+this the knowledge of the general integral may be and is very
+often quite insufficient. For instance, in spite of the fact that
+we have the general solution of Laplace's equation, this does
+not enable us to solve, without further and rather complicated
+calculations, ordinary problems depending on that equation
+such as that of electric distribution.
+
+Each partial differential equation gives rise, therefore, not to
+one general problem, consisting in the investigation of all solutions
+altogether, but to a number of definite problems, each of
+them consisting in the research of one peculiar solution, defined,
+not by the differential equation alone, but by the system of that
+equation and some accessory data.
+
+The question before us now is how these data may be chosen
+in order that the problem shall be ``correctly set.'' But what
+do we mean by ``correctly set''? Here we have to proceed by
+analogy.
+%% -----File: 012.png---Folio 2-------
+
+In ordinary algebra, this term would be applied to problems
+in which the number of the conditions is equal to that of the
+unknowns. To those our present problems must be analogous.
+\emph{In general}, correctly set problems in ordinary algebra are characterized
+by the fact of having solutions, and in a finite number.
+(We can even characterize them as having a unique solution
+if the problem is linear, which case corresponds to that of our
+present study.) Nevertheless, a difficulty arises on account of
+exceptional cases.
+
+Let us consider a system of linear algebraic equations:
+\[
+\begin{array}{c}
+  a_{1}x_{1} + \cdots \cdots + a_{n}x_{n} = b_{1}\\
+  \hdotsfor{1}\\
+  \hdotsfor{1}
+\end{array}
+\Tag{(1)}
+\]
+the number~$n$ of these equations being precisely equal to the
+number of unknowns. If the determinant formed by the coefficients
+of these equations is not zero, the problem has only
+one solution. If the determinant is zero, the problem is in
+general impossible. At a first glance, this makes our aforesaid
+criterion ineffective, for there seems to be no difference between
+that case and that in which the number of equations is greater than
+that of the unknowns, where impossibility also generally exists.
+(Geometrically speaking, two straight lines in a plane do not
+meet if they are parallel, and in that they resemble two straight
+lines given arbitrarily in three-dimensional space.) The difference
+between the two cases appears if we choose the~$b$'s (second
+members of the equation~\Eqno{(1)}) properly; that is, in such manner
+that the system becomes again possible. If the number of
+equations were greater than~$n$, the solution would (in general)
+again be unique; but, if those two numbers are equal, the problem
+when ceasing to be impossible, proves to be \emph{indeterminate}.
+
+Things occur in the same way for every problem in algebra.
+For instance, the three equations
+\begin{align*}
+f(x, y, z) &= a\\
+g(x, y, z) &= b\\
+     f + g &= c
+\end{align*}
+%% -----File: 013.png---Folio 3-------
+between the three unknowns $x$, $y$, $z$, constitute an impossible
+system if $c$ is not equal to $a + b$, but if $c$ equals $a + b$, that
+system is in general indeterminate.
+
+Moreover, this fact has been both extended and made precise
+by a most beautiful theorem due to Schoenflies.
+
+Let
+\[
+f(x, y, z) = X, \quad
+g(x, y, z) = Y, \quad
+h(x, y, z) = Z
+\Tag{(2)}
+\]
+be the equations of a space-transformation, the functions $f$, $g$, $h$
+being continuous. Let us suppose that within a given sphere
+($x^2 + y^2 + z^2 = 1$, for instance), two points $(x, y, z)$ cannot give
+the same single point $(X, Y, Z)$: in other words, that $f(x, y, z)
+= f(x', y', z')$, $g(x, y, z) = g(x', y', z')$, $h(x, y, z) = h(x', y', z')$
+cannot be verified simultaneously within that sphere unless
+$x = x'$, $y = y'$, $z = z'$. Let $S$ denote the surface corresponding
+to the surface $s$ of the sphere; that is, the surface described by
+the point $(X, Y, Z)$ when $(x, y, z)$ describes $s$. If in equation~\Eqno{(2)}
+we consider now $X$, $Y$, $Z$ as given and $x$, $y$, $z$ as unknown, our
+hypothesis obviously means that those equations cannot admit
+of more than one solution within $s$. Now \textit{Schoenflies' theorem}
+says that \textit{those equations will admit of a solution} for any $(X, Y, Z)$
+that may be chosen within $S$. Of course the theorem holds
+for spaces of any number of dimensions. It is obvious that this
+theorem illustrates most clearly the aforesaid relation between
+the fact of the solution being \emph{unique} and the fact that that
+solution necessarily exists.\footnote
+  {We must note nevertheless, that in it the unique solution is opposed not
+only to solutions in infinite number (as above), but also to any more than
+one. For instance, the fact that $x^{2} = X$ may have no solution in $x$, is, from
+the point of view of Schoenflies' theorem, in relation with the fact that for
+other values of $X$, it may have two solutions.}
+
+As said above, the theorem is in the first place remarkable for
+its great generality, as it implies concerning the functions $f$, $g$, $h$
+no other hypothesis but that of continuity. But its significance
+is in reality much more extensive and covers also the functional
+field. I consider that its generalizations to that field cannot
+%% -----File: 014.png---Folio 4-------
+fail to appear in great number as a consequence of future discoveries.
+\label{page:4}%
+This remarkable importance will be my excuse for
+digressing, although the theorem in question is only indirectly
+related to our main subject. The general fact which it emphasizes
+and which we stated in the beginning, finds several applications
+in the questions reviewed in this lecture. It may be taken as a
+criterion whether a given linear problem is to be considered as
+analogous to the algebraic problems in which the number of
+equations is equal to the number of unknown. This will be the
+case always when the problem is possible and determinate and
+sometimes even when it is impossible, if it cannot cease (by
+further particularization of the data) to be impossible otherwise
+than by becoming indeterminate.
+
+% [** PP: Presumed \Section{2.}]
+Let us return to partial differential equations. Cauchy
+was the first to determine one solution of a differential equation
+from initial conditions. For an ordinary equation such as
+$f(x, y, dy/dx, d^{2}y/dx^{2}) = 0$, we are given the values of $y$ and
+$dy/dx$ for a particular value of~$x$. Cauchy extended that result
+to partial differential equations.
+
+Let $F(u, x, y, z, \partial u/\partial x, \partial u/\partial y, \partial u/\partial z, \partial^{2}u/\partial x^{2}, \cdots) = 0$ be a given
+equation of the second order and let it be granted that we can
+solve it with respect to~$\partial^{2}u/\partial x^{2}$. Thus we obtain $(\partial^{2}u/\partial x^{2}) + F_{1}
+= 0$ where $F_{1}$ is a function of all the above quantities, except
+$\partial^{2}u/\partial x^{2}$. Then Cauchy's problem arises by giving the values
+\[
+u = \varphi(y, z), \quad \pderiv{u}{x} = \psi(y, z)
+\Tag{(3)}
+\]
+of $u$ and $\partial u/\partial x$ for $x = 0$. (These data must be replaced by
+analogous data if, instead of the plane $x = 0$, we introduce
+another surface.) Indeed, under the above hypothesis concerning
+the possibility of solving the equation with respect to $\partial^{2}u/\partial x^{2}$,
+and on the supposition that the functions $F_{1}$,~$\phi$ and~$\psi$ are holomorphic,
+Cauchy, and after him, Sophie Kowalevska, showed
+that in this case there is indeed one and only one solution.
+This solution can be expanded by Taylor's series in the form
+$u = u_{0} + xu_{1} + x^{2}u_{2} + \cdots$ where $u_{0}$, $u_{1}$, $\cdots$ can be calculated.
+%% -----File: 015.png---Folio 5-------
+
+The above theorems are true for most equations arising in
+connection with physical problems, for example
+\[
+\nabla^{2}u = \pderiv[2]{u}{t}.
+\Tag{(E)}
+\]
+
+\emph{But in general these theorems may be false.} This we shall
+realize if we consider Dirichlet's problem: to determine the
+solution of Laplace's equation
+\[
+\nabla^{2}u = \pderiv[2]{u}{x}+\pderiv[2]{u}{y}+\pderiv[2]{u}{z} = 0
+\Tag{(e)}
+\]
+for points within a given volume when given its values at every
+point of the boundary surface~$S$ of that volume.
+
+It is a known fact that this problem is a correctly set one: it
+has one, and only one, solution. Therefore, this cannot be the
+case with Cauchy's problem, in which \emph{both}~$u$ and one of its
+derivatives are given at every point of~$S$. If the first of these
+data is by itself (in conjunction with the differential equation)
+sufficient to determine the unknown function, we have no right
+to introduce any \emph{other} supplementary condition. How is it
+therefore that, by the demonstration of Sophie Kowalevska, the
+same problem with both data proves to be possible?
+
+Two discrepancies appear between the sense of the question
+in one case and in the other: (\textit{a})~In the theorem of Sophie
+Kowalevska, $u$~has only to exist in the immediate neighborhood
+of the initial surface~$S$. In Dirichlet's problem, it has to exist
+and to be well determined in the whole volume limited by~$S$.
+We therefore require more in the latter case than in the former,
+and it might be thought that this is sufficient to resolve the
+apparent contradiction met with above.
+
+In fact, however, this is not the case and we must also take
+account of the second discrepancy. (\textit{b})~The data, in the case of
+the Cauchy-Kowalevska demonstration, are, as we said, supposed
+to be analytic: the functions $\varphi$,~$\psi$ (second members of~\Eqno{(3)})
+considered as functions of $y$,~$z$, are taken as given by convergent
+Taylor's expansions in the neighborhood of every point
+%% -----File: 016.png---Folio 6-------
+of the plane~$x = 0$ in the region where the question is to be solved.
+Nothing of the kind is supposed in the study of Dirichlet's
+problem. Not even the existence of the first derivatives of~$u$,
+corresponding to displacements on~$S$, is postulated, and in some
+researches, certain discontinuities of these values are admitted.
+Both these circumstances play their rôle in the explanation of
+the difference between the two results discussed above.
+
+That (\textit{a}) is one reason for that difference is evident, for of
+course, if a function is required to be harmonic (i.\,e.\ to admit
+everywhere derivatives and to verify Laplace's equation) within
+a sphere, its values and those of its normal derivative, may not
+together be chosen arbitrarily on the surface even if analytic.
+
+To show that (\textit{a}) is not sufficient for the required explanation,
+let us take the geometric terms of the problem in the same way
+as Cauchy. We therefore suppose that, $u$ being defined by
+Laplace's equation, the accessory data given to determine it
+are the values of~$u$\Typo{,}{} and~$\partial u/\partial x$ on the plane $x = 0$, or, more
+exactly, on a certain portion~$\Omega$ of that plane; $u$ will also not be
+required, now, to exist in the whole space; its domain of existence
+may be limited, for instance, to a certain distance, however small,
+from our plane $x = 0$ (in the environs of~$\Omega$) provided that
+distance be finite and not infinitesimal.
+
+Now under these conditions, in general such a function~$u$
+does \emph{not} exist, if the data are not analytic and are chosen arbitrarily.
+One sees then a fact which never appeared as long as
+ordinary differential equations were alone concerned, namely,
+that the results are utterly different according as the analytic
+character of the data is postulated or not.
+
+%[**PP: No section 1. or 2.; presumed locations marked above.]
+\Typo{\Section{3.}{}}{}
+
+Of these two opposite results which is to be considered as
+giving us a more correct and adequate idea of the nature of
+things? I do not say as the true one, for of course each one is so
+under proper specifications.
+
+Some mathematicians still incline to prefer the old point
+%% -----File: 017.png---Folio 7-------
+of view of Cauchy, one of their reasons being that, as known
+since Weierstrass, any function, analytic or not, can be replaced
+with any given approximation by an analytic one, (more precisely
+by a polynomial). Therefore the fact that a function
+belongs to one or the other of those two categories seems to them
+to be immaterial. I cannot agree with this point of view.
+That the thing is \textit{not} immaterial, seems to me to follow directly
+from what we have just stated. And it cannot fail to be put in
+evidence if we think not only of the mere existence of the solution,
+but of its properties and the means of calculating it. If
+Cauchy's problem, for equation~\Eqno{(e)}, ceases to be possible, as a
+rule, when the functions designated by $\varphi$, $\psi$ are not analytic,
+then every expression for the solution must depend essentially
+on that analyticity and especially upon the radii of convergence
+of the developments of $\varphi$, $\psi$. In other words, let us imagine
+that the functions $\varphi$, $\psi$ be replaced by other functions $\varphi_{1}$, $\psi_{1}$,
+the differences $\varphi_{1} - \varphi$, $\psi_{1} - \psi$ being very small for every
+system of real values of $y$, $x$ within~$\Omega$ (and perhaps also the
+differences of some derivatives being small). However slight
+the alteration may be it rigorously follows from the aforesaid
+theorem of Weierstrass, that the radii of convergence of
+the developments in power series (if existing at all) may and
+will be, in general, completely changed; so the calculations leading
+to the solution will necessarily be changed also.
+
+If that solution itself should undergo but a slight change, this
+would at once show us that these methods of calculation ought
+to be of quite an artificial nature, masking completely the qualitative
+properties of the required result.\footnote
+  {The solution by development in Taylor's series is, in general, for problems
+  of that kind, the only one which can be given. I know but one exception,
+  which is Schwarz's method for minimal surfaces, when a curve of the surface
+  and the corresponding succession of tangent planes are given. This method
+  rests on the favorable and exceptional circumstance that complex variables
+  can be employed for the study of real points of such a surface.}
+But in fact, it is clear
+that matters are not as just assumed above. The alteration
+$u_{1} - u$ produced on the values of~$u$ by our slight modification
+%% -----File: 018.png---Folio 8-------
+of $\varphi$,~$\psi$ will be generally important and often complete, as is
+evident\footnote
+  {If $u_1 - u$ should be uniformly very small at the same time as $\varphi_1 - \varphi$,
+  $\psi_1 - \psi$, it follows from the well-known convergence theorem of Cauchy that,
+  letting the analytic functions $\varphi_1$,~$\psi_1$, converge towards certain (non-analytic)
+  limiting functions $\varphi$,~$\psi$, the corresponding solution~$u_1$ ought to converge
+  uniformly towards a certain limit~$u$, which would be \Typo{}{a} solution of the problem
+  with the data $\varphi$,~$\psi$.}
+by the fact that $u$ will cease completely to exist when
+$\varphi$,~$\psi$ become non-analytical. This proves, first of all, that the
+application of Weierstrass' theorem in that case is illegitimate,
+since it gives an approximation for the data but nothing of the
+kind for the unknown.
+
+Then we see also that such a problem and calculation, the
+results of which are utterly changed by an infinitesimal error in
+starting, can have no meaning in their applications.
+
+This leads to my second and chief reason for considering
+only the results which correspond to non-analytic data, namely,
+the remarkable accordance between them and the results to
+which physical applications bring us.
+
+This accordance is the more interesting from the fact of its
+results being unexpected. Our former point of view---i.\,e.\ that
+of the Cauchy-Kowalevska theorem---evidently constitutes a
+complete analogy to the case of ordinary differential equations.
+But from our latter point of view---which is also the point of
+view in problems set by physical applications---every analogy
+seems to be upset. The results often seem almost incoherent\Typo{,}{;}
+they will give opposite conclusions in apparently similar
+questions.
+
+A first instance of this was given above. We know that
+Cauchy's problem is now impossible for Laplace's equation
+\[
+\Typo{\Delta}{\nabla}^2u
+ = \pderiv[2]{u}{x}+\pderiv[2]{u}{y}+\pderiv[2]{u}{z} = 0;
+\Tag{(e)}
+\]
+but, on the contrary, in the equation of spherical waves
+\[
+\pderiv[2]{u}{x}+\pderiv[2]{u}{y}+\pderiv[2]{u}{z}-\pderiv[2]{u}{t} = 0,
+\Tag{(E)}
+\]
+%% -----File: 019.png---Folio 9-------
+or of the cylindrical waves
+\[
+\pderiv[2]{u}{x} + \pderiv[2]{u}{y} - \pderiv[2]{u}{t} = 0,
+\Tag{(E')}
+\]
+we may assign arbitrarily the values (whether analytical or not)
+of~$u$ and~$\delta u/\delta t$ for $t = 0$, and Cauchy's problem set in that way
+has a solution (which is unique). In this latter case it is like
+a problem in algebra in which the number of equations is equal
+to the number of unknowns; in the former, like a problem in
+which the number of equations is superior\footnote
+  {We could be tempted to apply in that case the remark made in the beginning
+  (\Pageref{4}) concerning such impossible problems, which, notwithstanding
+  that circumstance, must be considered as resembling ``correctly set'' ones.
+  This, however, is not really applicable; for we have seen that the category
+  alluded to is recognized by the fact that the problem may, under more special
+  circumstances, become indeterminate. Now, this can never be the case in
+  the present question: it follows from a theorem of Holmgren (``Archiv für
+  Mathematik'') that the solution of Cauchy's problem, if existent, is in every
+  possible case unique.}
+to the number of
+unknowns.
+
+It never could have been imagined \textit{a~priori} that such a difference
+could depend on the mere changing of sign of a coefficient in
+the equation. But it is entirely conformable to the physical
+meaning of the equations. Equation~\Eqno{(E')}, for instance\Typo{}{,} governs
+the small motions of a homogeneous and isotropic medium, like a
+homogeneous gas; and the corresponding Cauchy's problem,
+enunciated above, represents the definition of the motion by
+giving the state of positions and speeds at the origin of times.
+On the contrary, equation~\Eqno{(e)}, which also governs many physical
+phenomena, never leads to problems of that kind but exclusively
+to problems of the Dirichlet type. The analytical criterion by
+which those two kinds of partial differential equations are to be
+distinguished, is known: it is given by what are called the
+\textit{characteristics of an equation}. The characteristics of an equation
+correspond analytically with what the physicist calls the \textit{waves}
+compatible with this equation, and are calculated in the following
+way. Let a wave be represented by the equation $P(x, y, z, t) = 0$.
+%% -----File: 020.png---Folio 10-------
+In the given equation, for instance, if $\Typo{\Delta}{\nabla}^2u - 1/a^2 · \partial^2u/\partial t^2 = 0$
+and $\Typo{\Delta}{\nabla}^2u$ be replaced by $(\partial P/\partial x)^2 + (\partial P/\partial y)^2 + (\partial P/\partial z)^2$ and
+$- (1/a^2)(\partial^2u/\partial t^2)$ by $- (1/a^2)(\partial P/\partial t)^2$ the condition thus obtained
+is
+\[
+\left(\pderiv{P}{x}\right)^2
+  + \left(\pderiv{P}{y}\right)^2
+  + \left(\pderiv{P}{z}\right)^2
+  - \frac{1}{a^2}\left(\pderiv{P}{t}\right)^2 = 0
+\]
+%{\stretchyspace
+(which is a partial differential equation of the first order).
+It must be verified by the function~$P$. When this holds,
+$P(x, y, z, t) = 0$ is said to be a characteristic of the given equation.
+
+For equation~\Eqno{(E)}, such characteristics exist (that is, are real);
+this case is called the \textit{hyperbolic one}.
+
+Laplace's equation, $\Typo{\Delta}{\nabla}^2u = 0$, on making the above substitution,
+leads to the equation
+\[
+\left(\pderiv{P}{x}\right)^2
+  + \left(\pderiv{P}{y}\right)^2
+  + \left(\pderiv{P}{z}\right)^2 = 0
+\]
+which has no real solution. Therefore, in this case there are no
+waves and we have the so-called elliptic case.\footnote
+  {An intermediate case exists $\Typo{\Delta}{\nabla}^2u - k(\partial u/\partial t) = 0$. This is semi-definite
+  and is termed the parabolic one (example: the equation of heat).}
+Cauchy's problem
+can be set for a hyperbolic equation, but not for an elliptic one.
+Does this mean that for a hyperbolic equation Cauchy's problem
+will always arise? No, the matter is not quite so simple. For
+instance, in equation~\Eqno{(E)} or~\Eqno{(E')}, we could not choose arbitrarily
+$u$~and~$\partial u/\partial y$ for $x = 0$; this would lead us again to an
+impossible problem (in the non-analytic case, of course).
+
+The physical explanation of this lies in the fact that there are,
+besides the partial differential equation, two kinds of conditions
+determining the course of a phenomenon, viz., the initial and the
+boundary conditions. The former are of the type of Cauchy
+and they alone intervene in Cauchy's problem quoted above
+for the equation of sound.
+
+But the boundary conditions are always of the type of Dirichlet.
+They are the only ones which can occur in an elliptic
+equation, but even in a hyperbolic one they generally present
+%% -----File: 021.png---Folio 11-------
+themselves together with initial ones. This gives place to so-called
+\emph{mixed problems} where the two kinds of data (belonging
+respectively to the Cauchy and to the Dirichlet type) intervene
+simultaneously for the determination of the unknown.
+
+In equation~\Eqno{(E)}, $t = 0$ represents the origin of time and can
+give place to initial conditions, having the form of Cauchy.
+But no such conditions can correspond to $x = 0$, which represents
+a geometric boundary.
+
+More or less complicated cases can arise for various dispositions
+of the configurations, giving place to other paradoxical
+and apparently contradictory results, which can however all be
+explained in the same way. Moreover, there are other types
+of linear partial differential equations,\footnote
+  {The so-called \emph{non-normal} hyperbolic equations, such as
+    \[
+      \pderiv[2]{u}{x_1} + \cdots \pderiv[2]{u}{x_m}
+    - \pderiv[2]{u}{y_1}   \cdots \pderiv[2]{u}{y_{\Typo{m}{n}}} = 0
+    \quad \text{($m > 1$, $n > 1$)\Typo{}{.}}
+    \]}
+which do not govern any
+physical phenomena. The determination of solutions has been
+studied\footnote
+  {By Hamel (Inaugural Dissertation, Göttingen) and Coulon (thesis, Paris)\Typo{}{.}}
+in the analytic case but no sort of determination of
+that kind for non-analytic data has been discovered hitherto.
+
+We see that from this non-analytic point of view the accordance
+between mathematical results and the suggestions of
+physics holds perfectly. This accordance must not surprise us,
+for, as we saw above, it corresponds to the fact that a problem
+which is possible only with analytic data can have no physical
+meaning. But it remains worth all our attention. No other
+example better illustrates Poincaré's views\footnote
+  {Lectures delivered at the first International Mathematical Congress,
+  Zurich, 1897; reproduced in ``La Valeur de la Sciences.''}
+on the help which
+physics brings to analysis as expressed by him in such statements
+as the following: ``It is physics which gives us many important
+problems, which we would not have thought of without it,''
+and ``It is by the aid of physics that we can foresee the solutions.''
+%% -----File: 022.png---Folio 12-------
+
+
+\Chapter{LECTURE II}
+{Contemporary Researches in Differential Equations,
+Integral Equations, and Integro-Differential
+Equations}
+\label{chapter:2}
+\fancyhead[CE]{\Heading{SECOND LECTURE}}
+\fancyhead[CO]{\Heading{CONTEMPORARY RESEARCHES IN EQUATIONS}}
+
+\Section{1.}{Partial Differential Equations and Integral Equations}
+
+I reminded you at the end of the last lecture what indispensable
+help the physicist renders to the mathematician in furnishing
+him with problems. But that help is not always free from
+inconveniences, and the task of the mathematician is often a
+thankless one. Two cases generally occur: it may happen that
+the physical problem is easily soluble by a mere ``rule of three''
+method, but if not, it is so extremely difficult that the mathematician
+despairs of solving it at all; and he will strive after
+that solution for two centuries and, when he obtains it, our
+interest in the particular physical problem may have been lost.
+Such seems to be the case with some problems concerning partial
+differential equations. Just after the discovery of infinitesimal
+calculus, physicists began by needing only very simple methods
+of integration, the problems in general reducing to elementary
+differential equations. But when higher partial differential
+equations were introduced, the corresponding problems almost
+immediately proved to be far above the level of those which
+contemporary mathematics could treat.
+
+Indeed, those problems (such as Dirichlet's) exercised the
+sagacity of geometricians and were the object of a great deal of
+important and well-known work through the whole of the
+nineteenth century. The very variety of ingenious methods
+applied showed that the question did not cease to preserve its
+rather mysterious character. Only in the last years of the
+century were we able to treat it with some clearness and understand
+%% -----File: 023.png---Folio 13-------
+its true nature. This clearness seemed to come too late,
+for at that time, physics began its present evolution in which it
+seems to disregard partial differential equations and to come
+back to ordinary differential equations, but of course in problems
+profoundly different from the simple cases which were
+familiar to \Typo{Bernouilli}{Bernoulli} or Euler.
+
+Happily, for it would have been a humiliating thing to work so
+uselessly, this disregard was only in appearance, and the ancient
+problems have not lost their importance by the fact that other
+ones have been superposed on and not substituted for them.
+In fact, the solution now obtained for Dirichlet's problem has
+proved useful in several recent researches of physics.
+
+Let us therefore inquire by what device this new view of
+Dirichlet's problem and similar problems was obtained. Its
+peculiar and most remarkable feature consists in the fact that
+the partial differential equation is put aside and replaced by a
+new sort of equation, namely, the integral equation. This new
+method makes the matter as clear as it was formerly obscure.
+
+In many circumstances in modern analysis, contrary to the
+usual point of view, the operation of integration proves a much
+simpler one than the operation of derivation. An example of
+this is given by integral equations where the unknown function
+is written under such signs of integration and not of differentiation.
+The type of equation which is thus obtained is much
+easier to treat than the partial differential equation.
+
+The type of integral equations corresponding to the plane
+Dirichlet problem is
+\[
+\phi(x) - \lambda \int_A^B \phi(y)K(x, y)\,dy = f(x)
+\Tag{(1)}
+\]
+where $\phi$ is the unknown function of~$x$ in the interval $(A, B)$,
+$f$~and~$K$ are known functions, and $\lambda$ is a known parameter. The
+equations of the elliptic type in many-dimensional space give
+similar integral equations, containing however multiple integrals
+and several independent variables. Before the introduction of
+%% -----File: 024.png---Folio 14-------
+equations of the above type, each step in the study of elliptic
+partial differential equations seemed to bring with it new difficulties;
+not only did the various methods imagined for Dirichlet's
+problem not cast more than a partial light on the question,
+but the principles of most of them were peculiar to that special
+problem: they seemed to disappear if Laplace's equation was
+replaced by any other equation of the same type, or even (except
+for Neumann's method, which, as we shall soon see, is directly
+related to integral equations) if for the same Laplace's equation
+Dirichlet's problem was replaced by any analogous one
+such as presented by hydrodynamics or theory of heat. Each
+of them, besides, was rather a proof of existence than a method
+of calculation.
+
+Then they seemed again quite insufficient for another series
+of questions which mathematical physics had to solve, viz., the
+study of harmonics. The existence of those harmonics (such as
+the different kinds of resonance of a room filled with air) was
+physically evident, but for the mathematician it offers an immense
+difficulty. Schwarz, Picard and Poincaré gave a first
+solution which was rather complicated as each harmonic requires
+for its definition a new infinite process of calculation after the
+preceding one has been determined. Nevertheless it has demonstrated
+rigorously the chief properties of the quantities in question
+(namely, certain special values of the parameter in equation~\Eqno{(1)}),
+i.\,e.\ that they exist and form a discrete infinity, only a finite
+number of them lying within any finite interval.
+
+But at the same time a discovery even more important, in a
+certain sense, was made by Poincaré, namely the near relation
+between that question of harmonics and the method which had
+been indicated by Neumann for Dirichlet's problem. This
+discovery of Poincaré paved the way for Fredholm's work. The
+latter treats every one of the aforesaid questions, and any
+which can be assimilated to them, by one and the same method,
+which consists in the reduction to an equation such as~\Eqno{(1)}.
+This gives all the required results at once and for all the possible
+types of such problems.
+%% -----File: 025.png---Folio 15-------
+
+In all this, the mathematician seems to play again the
+unfortunate \Typo{role}{rôle} we alluded to in the beginning; for those
+results are nothing but the mathematical demonstration of facts
+each of which was familiar to every physicist long before the
+beginning of all those researches. But of course their interest
+is not in fact limited in demonstration; they can and do serve
+as starting points for the discovery of new facts. They are
+useful as giving the proper method of calculation. Previously,
+in the calculation of the resonance of a room filled with air,
+the shape of the resonator had to be quite simple, which requirement
+is not a necessary one for the case where integral equations
+are employed. We need only make the elementary calculation
+of the function~$K$ and apply to the function so calculated the
+general method of resolution of integral equations.
+
+There are two chief methods for the solution of the equations.
+It is not always easy to get numerical results.
+
+Liouville and Neumann (in solving Dirichlet's problem)
+really worked out a method of solving integral equations. A
+second method is due to Fredholm. The first method leads to
+series which may converge slowly but they are easy to calculate.
+The method of Fredholm gives a quotient of two series (entire
+functions of~$\lambda$) the terms of which have to be calculated independently,
+while in the first method each is obtained from the
+one immediately preceding it. While we must add that Erhard
+Schmidt has shown how the first method can be made to supply
+a more rapidly convergent series, Fredholm's method is of
+greater value to physics because of the theoretical point of view.
+It gives easily (what was impossible before its appearance) not
+only the existence of harmonics, but their properties. For
+instance, older methods could not have succeeded, at least not
+without great difficulties and a large amount of calculation, in
+obtaining the order of magnitude of the successive upper harmonics
+(i.\,e.\ the corresponding great values of~$\lambda$). They would
+probably have been quite unable to predict the order or magnitude,
+as is done in the recent works of Hermann Weyl, so as to
+%% -----File: 026.png---Folio 16-------
+show its relation the volume of the room to which they
+correspond. But it has even proved of great importance for
+physics to know mathematically, and not only empirically, that
+the harmonics corresponding to equations of the form~\Eqno{(1)} are a
+discrete infinity. For in the case of the spectral frequencies we
+get series which tend to accumulate towards definite positions.
+Since Fredholm's theory we can assert that such series are not
+compatible with the form of integral equation given at the
+beginning of this lecture.
+
+Fredholm himself investigated new forms (as also did Walther
+Ritz). The introduction of the integral equation has made even
+the above problem accessible. The older method would not have
+been able to decide whether the distribution in question was possible
+or not. The hypothesis proposed by Fredholm leads to an
+integral equation such as
+\[
+\phi(x) - \frac{1}{k-\lambda^{2}}\int_{a}^{b} \phi(y)K(x, y)\,dy = f(x)
+\Tag{(2)}
+\]
+Here the frequencies will accumulate in the neighborhood of
+$\lambda = \sqrt{K}$.
+
+I must immediately add that, as Ritz showed, Fredholm's type
+is not sufficient to give a correct explanation of the phenomena.
+But this does not change the essential fact that by the aid of the
+new method we are immediately able to decide what the asymptotic
+distribution of harmonics can or cannot be, so that comparison
+with observation becomes possible; and this we owe
+entirely to Fredholm's method.
+
+\Section{2.}{Coming Back to Ordinary Differential Equations}
+
+As we said in the beginning, the subject of partial differential
+equations which was the main and almost the only occupation
+of mathematical physics, ceases nowadays to be so. As a consequence
+of the general admission of the discrete structure of
+matter, physical problems tend now to lead to ordinary differential
+equations. These differential equations are to be studied
+%% -----File: 027.png---Folio 17-------
+under the most difficult circumstances because we must follow
+the form of the solutions for very long periods of time, that is,
+of the independent variable~$t$. One can say that such a study
+did not exist before Poincaré, and even his researches on the
+subject, I mean especially his four chief memoirs in the ``Journal
+de Mathematiques,'' 1887 (\textit{On the shape of Curves Defined by
+Differential Equations}), lead us, like Socrates, to begin to feel
+that we know nothing.
+
+We cannot, in this place, lay stress on the extraordinary complications
+and paradoxes which he discovered. We shall mention
+only one of them, because it helps to correct an error frequently
+committed in hydrodynamical and electrical problems, concerning
+the lines of force and the lines of flow. These lines are all
+defined by ordinary differential equations. The general form
+is $dx/X = dy/Y = dz/Z$. In a very general category of cases
+the vector~$XYZ$ has the property that
+\[
+\div (XYZ) = \left(\pderiv{X}{x} + \pderiv{Y}{y} + \pderiv{Z}{z}\right) = 0
+\]
+Now, whenever such conditions existed, physicists used to say
+that the tubes of force---or tubes of flow, or tubes of vortices---were
+closed (if they did not go to infinity or come to the
+boundaries of the domain of existence of the vector $X$,~$Y$,~$Z$).
+
+They were, I think, led to say so by the examples given by
+some simple peculiar cases in which the differential equations
+could be integrated, for one could not suspect before Poincaré's
+work that such cases are exceptional, generally giving
+a quite inadequate and deformed view of things. In fact, the
+assertion in question is an utterly false one.\footnote
+  {A demonstration is frequently given to justify it, the error of which
+  consists in an incomplete enumeration of possible cases.}
+If you allow me
+such a crude comparison, it is not true that the tube of force
+must get back home and put its key in the lock. Rather does
+it put its key above and below and on either side, and never
+succeeds in getting it in exactly. It will, it is true, nearly get
+%% -----File: 028.png---Folio 18-------
+back an infinite number of times. The only consequence which
+can be correctly drawn from the equation $\div(XYZ) = 0$ is
+that the area of the cross section of the tube cannot have changed.
+But its shape may, and generally will, have done so. If it were,
+let us say, circular in starting, it will have become elliptic when
+coming back and its ellipticity will increase at each return.
+Finally it will become a long flat strip and only a part of it will
+come back to the neighborhood of its original position. In \Figref{1},
+the successive appearances of the same tube of force are shown.
+The tube of force may have been originally circular, but on its
+first recurrence or return, it may have become elliptic in cross
+section and thus it has only partly returned to its original
+position. Still more is this the case in the second recurrence of
+the tube of force, which may be assumed by this time to have
+become very flat in cross section.
+
+\Graphic{1}{3.5in}{028}% [Illustration: \textsc{Fig.~1} ]
+As Mr. Birkhoff kindly pointed out to me, it is interesting
+to remark that in most cases, the deformed and flattened tube
+will even pass \textit{simultaneously} indefinitely near to any point of
+the considered medium.
+
+A rather curious fact must nevertheless be stated. Although
+the principle that the tube is closed is completely false, the
+%% -----File: 029.png---Folio 19-------
+conclusions drawn from it by physicists are most often true.
+Why is this so? Perhaps the explanation lies in the fact that
+under that same hypothesis, $\div (X, Y, Z) = 0$, a line defined
+by our differential equations generally returns indefinitely near
+and an infinite number of times to its starting point. (This is
+called ``Stabilité a la Poisson.'') Poincaré has shown that though
+not every line in question necessarily does this, the fact occurs
+for an infinitely greater number of cases than those in which it
+does not occur.
+
+\Section{3.}{Application to Molecular Physics}
+
+We see by this single example how complicated and unexpected
+the shapes of curves defined by differential equations may be,
+and how far we are from understanding them when considered
+for great values of the independent variable.
+
+But could we be satisfied with our work if we succeeded in
+doing so? This even is doubtful. I cannot help thinking of
+a bequest left to the French Academy of Science for a prize to
+the first person who should be able to communicate with a
+planet other than Mars! The case of molecular physics reminds
+me of that rather difficult requirement. The discussion of the
+molar effects (i.\,e.\ the effects on quantities of matter accessible
+to observation) of molecular movements is a mathematical
+problem, which, logically speaking, would presuppose a rather
+advanced knowledge of curves defined by differential equations,
+and take this as a starting point, in order to discuss the questions
+of probability connected with such curves.
+
+That probability plays its \Typo{role}{rôle} in the movements of almost any
+dynamical system, follows from the statements we just quoted.
+If the initial positions and the initial speeds of the moving points
+are exactly given, so will be the final positions and speeds after
+any (however long) given period of time. But if this period is
+long, and if we make a very small error in the initial conditions,
+the small error will have a much magnified effect and even cause
+a total change in the results at the end of the long period of
+time, and this is precisely Poincaré's conception of hazard.
+%% -----File: 030.png---Folio 20-------
+It is like a roulette game at Monte Carlo where we do not know
+all the conditions of launching the ball which induces the hazard.
+And so we know nothing more about the conditions than the
+gamblers. In other words, molecules are finally mixed just as
+cards after much shuffling. It is this fundamental hazard which
+plays the main part in Gibbs's method. A sort of mixing function
+ought to be introduced. Let us start on one of the lines of
+force. If we know exactly the point of departure~$A$ we should
+know accurately the point of arrival. If $A$ is but approximately
+known, that point of arrival may occupy all sorts of positions;
+and indeed, in many differential problems, it may coincide
+(approximately) with any point~$B$ within the domain where the
+differential system is considered (though this is not exactly so
+for dynamical problems on account of the energy integral or
+other uniform integrals which the equations may admit).
+
+Therefore, the starting point being approximately~$A$, there
+will be a certain probability that the point of arrival will be in a
+certain neighborhood of another given point~$B$; and that probability
+will be a certain function of the positions of the two
+points~$A$,~$B$.
+
+Now, logically speaking, in order to solve the question set
+for us by kinetic theories, we ought to take such a ``mixing
+function,'' assuming it to be known, as a base for further and
+perhaps complicated reasoning. In fact, the main present
+theories in statistical mechanics rest on certain assumptions
+concerning that function, which are very plausible. But, rigorously
+speaking, we are not able to consider them as theorems.
+
+Happily, things are greatly simplified by the fact that in such
+mixings the aforesaid function, characteristic of the law of
+mixing, only intervenes by some of its properties and may be
+changed to a large extent without changing the final result.
+This is what Poincaré showed for the ordinary shuffling of cards
+in his ``Calcul des \Typo{Probabilitès}{Probabilités}'' (second edition). In one
+shuffling the peculiar habits of the player certainly intervene
+and so do they more or less after only a few shufflings. But
+%% -----File: 031.png---Folio 21-------
+after many shufflings the results become totally independent of
+those habits. Poincaré also shows (though with some exceptions
+which do not however seem to play a great practical rôle),
+that such is likewise the case in the kind of mixing introduced by
+molecular theories.
+
+Some known facts in the history of these theories give a
+striking instance of this. Such is the work of Boltzmann and
+Gibbs in the treatment of the kinetic theory of gases and
+statistical mechanics. They both obtained the result that if
+we consider the probability of the average number of molecules
+in $6$-dimensional space and call it~$P$, and integrate~$\log P$
+over the whole mass, the conclusion drawn will be that the
+integral obtained is constantly increasing. Critics, and among
+them my colleague and friend Brillouin, say: ``We have not
+to congratulate ourselves on the result, because the two speak
+of quite different things and yet they agree. Gibbs does not
+mention the collision of molecules, while Boltzmann's analysis
+is founded on the collisions of molecules. The primitive order
+of the molecules is disturbed by such collisions and a mixing is
+produced. Gibbs gets a similar mixing by the mere consideration
+of differential equations existing over long periods of time.''
+In both cases, if we consider systems which are ``molecularly
+organized,'' after a certain time the molecules will be so much
+less organized and more mixed up.
+
+We are surprised to find this coincidence of the results of
+Gibbs and of Boltzmann in such circumstances. We shall, however,
+cease to consider it as fortuitous and perceive its true
+signification by precisely what we just remarked on the shuffling
+of cards, which makes us understand that such final results may
+and do depend on properties which are, in general, common to
+utterly various laws of mixing.
+
+But the difficulties met with in partial or ordinary differential
+equations are not the only ones which we had to consider at the
+present time. The mathematicians have contrived to introduce
+a new sort of equation, more difficult than the previous ones, the
+integro-differential equation.
+%% -----File: 032.png---Folio 22-------
+
+\Section{4.}{Integro-\Typo{differential}{Differential} Equations}
+
+We are now forced to consider this new form. Here the unknown
+function simultaneously appears in integrals and in differentials.
+We have at least two completely different cases of such equations
+to consider. Their difference corresponds to the two sorts of
+variables which intervene in all physical problems, the space
+variables $x$,~$y$,~$z$, and the time variable~$t$. (There may be more
+than three variables in the first group.)
+
+Type~1: Differentiation with respect to $x$,~$y$,~$z$; integration
+relative to~$t$. Type~2: Differentiation with respect to~$t$; integration
+relative to $x$,~$y$,~$z$. And even though this type dates only
+from 1907, we have already found cases of both kinds.
+
+Volterra was led to consider the first one in connection with
+``The Mechanics of Heredity.'' This is the case where the
+properties of the system depend on all the previous facts of its
+existence (such as magnetic hysteresis, strains of glass, and
+permanent deformations in general).
+
+Volterra considers elastic hysteresis. Let $T$ be any component
+of strains; $E$~the component of deformation. (There are six $T$'s
+and six~$E$'s.) Then formerly we considered $T_{hk} = \sum a_{hk}E_{hk}$. There
+are $6$~equations of this type. There are $21$,~$36$, $6$~or $2$~$a$'s depending
+on the theories. If we consider heredity, we must introduce
+new terms. Suppose that at the time~$0$ there were no strains; then
+$T_{hk} = \sum aE_{hk} + {\displaystyle\int_0^t} (\sum aE)_{t}\, d\tau$ where $\tau$ is the variable time. This
+is an equation in which we have derivatives with respect to $x$,~$y$,~$z$,
+and an integral with respect to the time; and the same
+character subsists if, from those values of the~$T$'s, we deduce
+the equations of movement. Water waves furnish us with an
+instance of the opposite type. One knows that waves on the
+surface of water are the most common examples of an undulatory
+phenomenon and that, for this reason, they are most frequently
+used to give to the beginner a first idea of what such phenomena
+are.
+
+But it is a general, though astonishing fact, that the most
+%% -----File: 033.png---Folio 23-------
+simple of daily phenomena are the most difficult to understand.
+While the theory of aërial or even elastic waves is rather simple,
+at least as long as viscosity is left aside,\footnote
+  {In a viscous gas, waves cannot exist, strictly speaking. They are replaced
+  by quasi-waves which were first considered by Duhem, and more profoundly
+  studied in an important memoir presented by Roy to the French Academy
+  of Sciences.}
+and now classically
+reduced to analytical principles (related to notion of characteristics
+as we saw in the preceding lecture), the properties of surface
+waves in liquids are much more hidden. The few results classically
+known on that subject are even of a contradictory nature.
+One of them is the differential equation given by Lagrange in
+the case of small (and constant) depth, which has served as a
+model for the dynamical theory of tides, the equation obtained
+as governing the phenomenon being in both cases a partial
+differential equation of the \emph{second} order. But, for the same
+phenomenon on a liquid of indefinite depth, Cauchy gets a
+partial equation of the \emph{fourth} order. The truth is that the
+problem does not lead to a differential equation at all, but to
+an integro-differential equation. For an originally plane surface
+with small displacements, where $z$ is the vertical displacement
+at~$(x, y)$, then
+\[
+\deriv[2]{z}{t} = \iint Z_{Q} \phi (P, Q)\, dS_{Q}\Typo{}{.}
+\]
+Thus, for any determinate point~$P$ of the surface defined by its
+coördinates, $(x, y)$, the vertical acceleration depends on the
+values of~$z$ in every other point~$Q(x', y')$. Here $S_{Q}$ is~$dx'\, dy'$
+and $\phi$ is a known function of $(x, y, x', y')$. The above equation
+is of the second form of integro-differential equations.
+
+Volterra succeeded in the case of isotropic bodies in reducing
+the problem to the solution of a partial differential equation and
+an ordinary integral equation. But things are not so simple
+for crystalline media.\footnote
+  {Since these lectures were delivered, Professor Volterra has given a comprehensive
+  view of his methods and solutions in a course of lectures at the
+  University of Paris. See the issue of those lectures by J.~Peres (Paris, Gauthier
+  Villars).}
+%% -----File: 034.png---Folio 24-------
+
+The two types of integro-differential equations, which we
+just enumerated, are completely different in their treatment.
+Volterra's type resembles the partial differential equations (of
+the elliptic or sometimes parabolic genus in the examples hitherto
+given). The equation must be completed by accessory conditions
+which are nothing else than boundary conditions (cf.\
+Lecture~I). The methods given by Volterra run exactly parallel
+to those which are applied for Dirichlet's problem (such as the
+formation of Green's functions).
+
+In the second type described above, the accessory conditions
+are initial ones; and are to be treated in the manner, not
+of partial, but of ordinary differential equations---such methods
+as Picard's successive approximations being of great use in that
+case.
+%% -----File: 035.png---Folio 25-------
+
+
+\Chapter{LECTURE III}{Analysis Situs in Connection with Correspondences and
+Differential Equations}
+\label{chapter:3}
+\fancyhead[CE]{\Heading{THIRD LECTURE}}
+\fancyhead[CO]{\Heading{ANALYSIS SITUS}}
+
+\Section{1.}{}
+
+We are going to speak of the rôle of analysis situs in our
+modern mathematics. This theory is also called the geometry of
+situation. It is the study of connections between different parts
+of geometrical configurations which are not altered by any continuous
+deformation. We suppose that we can let a system
+undergo any deformation whatever, however arbitrary it may be,
+only that it preserves continuity. For instance, a sphere and a
+cube are considered as one and the same thing from the point
+of view of the geometry of situation, because one can be transformed
+into the other without separating parts, or uniting parts
+which formerly were separated. The circle and the rectangle
+are identical from the same point of view. But the lateral
+surface of a cylinder and the surface of a rectangle are not
+identical, because, for the transformation of one into the other,
+we must make a cut along a generatrix. Also one is limited by
+two lines (the base circles) while the other is limited by one.
+The total surface of a cylinder is entirely closed; it is identical
+with the surface of a sphere. There is no difficulty in the
+transformation.
+
+If we consider the ``anchor ring,'' the case is different.
+This is a closed surface but it has a hole which is not found
+in the surface of the sphere, and the surface of the sphere cannot
+be transformed continuously in it. It would have to be
+transformed by several cuts, the first of them (\Figref{2}) giving a
+broken ring, which for us is identical with the lateral surface of
+a cylinder. This may be cut into a rectangle and then transformed
+%% -----File: 036.png---Folio 26-------
+into a sphere. But the transformation of an anchor
+ring into a sphere cannot be done without cutting and piecing.
+The principles of analysis situs, for surfaces in ordinary space,
+\Figure{2}{2.5in}{036a}% [Illustration: \textsc{Fig.~2.}]
+are well known and I do not intend to go over them at this moment.
+We shall take them for granted. According to them,
+a surface of two dimensions is defined from our present point of
+view by the number of boundaries and another number, namely
+%% -----File: 037.png---Folio 27-------
+the \textit{genus}. The genus is zero for the sphere and one for the
+anchor ring. For a pot with two ``ears'' (\Figref{3}) we have the
+genus two.
+\Graphic{3}{2.5in}{036b}% [Illustration: \textsc{Fig.~3.}]
+
+Analysis situs started with trifling problems, such as that
+treated by Euler of the bridges of Königsberg over the Pregel
+river. There are seven bridges; the problem is to go over all
+of them without passing twice over any one (\Figref{4}). The great
+\Figure{4}{3.5in}{037}% [Illustration: \textsc{Fig.~4.}]
+Euler did not disdain to occupy himself with this and many
+other apparently childish problems. But what interests us in
+this one especially is that it involves the geometry of situation,
+in the sense in which we have used the term. For even if the
+islands in the river had other shapes and the bridges had the
+queerest forms, the reasoning would be exactly the same, provided
+the numbers of islands and bridges should not change, and
+each bridge should join the same islands in both cases.
+
+We have here an example of an important theory which
+develops from a childish exercise. Some would think that it was
+a disadvantage to mathematics that we should occupy ourselves
+with such problems. The fact is, as we see, that they may,
+though exceptionally, lead to valuable results.
+
+That this notion of analysis situs was really an important one,
+appears first from the researches of Riemann. You know that
+Riemann was the fellow founder with Cauchy of the modern
+theory of analytic functions. These two schools applied their
+%% -----File: 038.png---Folio 28-------
+theories to the study of algebraic functions. Cauchy's methods,
+in the hands of their author and of Puiseux, were capable of
+casting light on some important parts of the problem, but did
+not however completely elucidate it, and (in particular) Riemann
+alone could discover the fundamental notion of the \emph{genus} of an
+algebraic curve.
+
+What were the elements of Riemann's success and superiority
+over Cauchy? A remark must first be made which perhaps,
+strictly speaking, would not be within our subject, but which
+is nevertheless, as we shall see, most closely and necessarily
+connected with it.
+
+Let us consider the real domain. Suppose that we have to
+study the algebraic function~$y$ defined by $x^{2} + y^{2} = 1$ (or any
+quadratic equation defining~$y$ as a function of~$x$ corresponding to
+an ellipse). This function is real only for values of~$x$ which are
+\Figure{5}{4in}{038}% [Illustration: \textsc{Fig.~5.}]
+comprised between $-1$~and~$+1$ (in the second case, for values
+between $x_{0}$~and~$x_{1}$). Riemann considered the function in the segment
+comprised between these values. He remarked that this
+is an incomplete view of the equation, for~$y$ is not well defined,
+%% -----File: 039.png---Folio 29-------
+because it has two different values. But if we change our straight
+line into two slightly different straight lines, then we may admit
+that the superior segment corresponds to the $+$~value of~$y$,
+and the inferior one to the $-$~value, the two segments being
+supposed to join each other at their common ends. To each
+point of the drawing, after that modification, one and only one
+system of values of $x$ and~$y$ verifying the given equation will
+correspond. Besides, in that case, we obtain a figure which
+from the point of view of analysis situs, is identical with the
+ellipse represented by the given equation itself.
+
+But Riemann applied that same method in the complex
+domain, and was led to the celebrated kind of representing surfaces
+which bear his name.
+
+This principle is a very general one. It must be applied, in
+any case, before using the geometry of situation. We must
+inquire whether the domain used is adequate to represent the
+states of variation to be studied. I shall give an instance which
+I think is due to Sophus Lie. It is concerned with the singular
+solution of differential equations of the first order. Given the
+differential equation
+\[
+f(x, y, y') = 0
+\Tag{(1)}
+\]
+the question, as well known, is whether some solution exists which
+is not represented in the general integral. In that case such a
+solution must verify not only the original equation, but also
+\[
+\pderiv{f}{y'} = 0
+\Tag{(2)}
+\]
+Darboux showed that this was not sufficient, and that, in general,
+the system of equations \Eqno{(1)}~and~\Eqno{(2)} does not represent an actual
+solution, but that the curve which it defines is the locus of the
+cusps of the solutions of equation~\Eqno{(1)} (\Figref{5}). We now shall
+see that this result, the analytical proof of which requires some
+complicated calculations, appears of itself by the above geometric
+considerations.
+
+Equation~\Eqno{(1)} defines $y'$ as a function of $x$ and~$y$, but this function
+%% -----File: 040.png---Folio 30-------
+has several determinations or branches. This state of things
+is not satisfactory from our point of view above. In order to
+avoid this, let us consider the surface $f(x, y, z) = 0$ in space. For
+each point of that surface, we have
+\[
+dy/dx = z
+\Tag{(3)}
+\]
+\Graphic{6}{4in}{040}% [Illustration: \textsc{Fig.~6.}]
+So that the problem becomes to trace on the surface, those curves
+which have $dy/dx$ equal to~$z$. Geometrically speaking, such
+curves must, in each point, be tangent to a certain direction, viz.\Typo{}{,}
+the intersection of the tangent plane to the surface with a certain
+vertical plane (represented by~\Eqno{(3)}). The system~\Eqno{(1)} and~\Eqno{(2)}
+%% -----File: 041.png---Folio 31-------
+represents the ``horizontal boundary'' of the surface. At each
+point~$m$ on it, the tangent plane is vertical (\Figref{6}). What
+happens there? We see that in~$m$, the two planes which define
+the tangent to our curve are vertical (the plane corresponding to~\Eqno{(3)}
+being so in any case). Therefore, this tangent itself is also
+vertical. This gives immediately the desired result; for it is
+well known that by projecting a space curve on a plane perpendicular
+to one of its tangents, we obtain a projection curve which
+has a cusp. The only exception would be when our two planes
+would coincide and this indeed gives the supplementary condition
+for the existence of a singular solution.
+
+A difficult question in differential equations is thus reconducted
+to an elementary result of analytical geometry; and this
+is obtained by the mere fact of depicting correctly (in the sense
+of Riemann) $y'$ as a function of $x$ and~$y$. Only when this adequate
+representation of the domain of variation is obtained,
+analysis situs is to be applied.
+
+Before seeing it in operation, let us notice that Cauchy had an
+opportunity of discovering its importance. This is a curious
+historical fact in his work; for it was one of his few errors.
+It was done in his youthful period, when dealing with the theorem
+of Euler on polyhedrons. This theorem connects the number of
+faces, summits and edges. It expresses that $F + V = E + 2$,
+where $F$ is the number of faces, $V$ is the number of vertices, and
+$E$ the number of edges. Cauchy's demonstration was false,
+and so is even the theorem itself. This theorem holds effectively
+(and this is the reason why Euler and Cauchy believed it to be
+true) for a very large category of polyhedra, among which every
+convex one occurs. But others had been overlooked, such as
+those which have the general shape of an anchor ring, and these
+do not verify the above relation. If Cauchy had perceived
+that error; if he had noticed that exception to Euler's theorem,
+it may be presumed with some probability that he would not
+have left to Riemann the glory of founding a complete theory
+of algebraic functions.
+%% -----File: 042.png---Folio 32-------
+
+Let me remind you of the difference between the method of
+Cauchy (and of Puiseux) and that of Riemann. If we consider
+the algebraic function defined by $F(x, y) = 0$, then $y$, in general,
+in the environs of $x_{0}$ and~$y_{0}$, is a regular analytic function of~$x$
+and is given by a Taylor's series within a certain circle around~$x_{0}$.
+Inside this circle, the principles of Cauchy and Weierstrass
+permit us to study the function. At critical points~$x_{1}$, where
+$y$ is not a holomorphic function of~$x$, Puiseux studied this.
+He took $X = (x - x_{1})^{1/p}$, $p$~being properly chosen. Then $y$ can
+be developed in powers of~$X$ instead of in terms of~$x - x_{1}$.
+Everything seems at first to be settled then. But really we still
+ignore some fundamental properties. The reason of this is that
+we do not get the direct idea of the total domain, but only an
+indirect idea of it by a series of smaller regions.
+
+It is true that these smaller regions are such that, taken altogether,
+they cover the totality of the domain in question, and
+for that reason, they finally may enable us to master it completely.
+But the error was to believe that this could be without
+a special study of the manner in which those partial regions
+are united.
+
+I should compare this (though the comparison is very incomplete)
+to the map of a large country, which is given by a
+series of partial leaves. We must take account, not only of
+each separate leaf, but of the ``assembling table'' showing their
+general disposition, so as to pass from the detail to the whole.
+The capital and unexpected fact, the discovery of which belongs
+to Riemann, is that such ``assembling tables'' are not at all
+like each other; that there are several quite different kinds of
+them: therefore, the synthesis of the details of the solution cannot
+be well understood without noticing these differences.
+
+\Section{2.}{}
+
+It is now evident that the importance of these considerations
+is not limited to algebraic functions. They are connected with
+every synthesis of the above mentioned kind, that is to say,
+%% -----File: 043.png---Folio 33-------
+theoretically speaking, with every employment of integral
+calculus.
+
+They constitute a sort of revenge of geometry on analysis.
+Since Descartes, we have been accustomed to replace each geometric
+relation by a corresponding relation between numbers,
+and this has created a sort of predominance of analysis. Many
+mathematicians fancy they escape that predominance and consider
+themselves as pure geometers in opposition to analysis; but most
+of them do so in a sense I cannot approve: they simply restrict
+themselves to treating exclusively by geometry questions which
+other geometers would treat, in general quite easily, by analytical
+means; they are of course, very frequently forced to choose
+their questions not according to their true scientific interest,
+but on account of the possibility of such a treatment without
+intervention of analysis. I am even obliged to add that some
+of them have dealt with problems totally lacking any interest
+whatever, this total lack of interest being the sole reason
+why such problems have been left aside by analysts. Of course,
+I not only admit geometrical treatment, but use it every time
+I find it possible, for, if applicable at all, it gives us, in general, a
+much better view of the subject than an analytical one. But
+very important problems may be inaccessible to it. We must
+use all means at our disposal and choose, not this or that one
+\Typo{a~priori}{\emph{a~priori}}, but the one best adapted to our question.
+
+But here geometry has over analysis a more certain advantage.
+I consider that analysis could not, or could only
+with great difficulty, and probably after a long series of sterile
+efforts, have replaced the geometrical views we have just alluded
+to for resolving the corresponding part of the problem. I mean
+that passage from the solution in small regions to the solution
+over the whole domain.\footnote
+  {Logically speaking, even the results of analysis situs can be rigorously
+  stated in numerical language; but such statements have been made only
+  after the results have been found, and some parts of this analytic treatment
+  are of extreme difficulty (such as Jordan's theorem).}
+%% -----File: 044.png---Folio 34-------
+
+Let us, for instance, admit that that domain is a two-dimensional
+one. Then according to analytical methods, we ought to
+individualize any point of it by giving the values of two parameters,
+$x$~and~$y$. But the representation of a geometrical
+problem by means of functions of $x$ and $y$ often makes us lose
+some element of the problem: functions in a domain in two
+dimensions may be something else than the functions of $x$
+and~$y$. The simultaneous variation of $x$ and $y$ represents a
+plane. Now a plane has not the same general shape as a sphere
+or anchor ring, and those differences are lost in Descartes's
+method. We can have, for instance, as many examples of this
+difference in rational dynamics as we please. One knows that
+when a dynamical problem has two degrees of freedom the corresponding
+differential equations, i.\,e.\ the equations of Lagrange,
+are defined, the parameters which define the position of the
+system being designated by $x$ and~$y$, if one gives the expression
+$2T = E(x, y)x'^{2} + 2F(x, y)x'y' + G(x, y)y'^{2}$ for the vis viva
+and the expression $U = \varphi (x, y)$ for the force function. Therefore,
+if two problems of dynamics correspond to the same expression
+of~$T$ and the same expression of~$U$, their studies ought
+to be exactly identical and reducible to each other. That matters
+may really be quite different is to be immediately seen
+by the following example:
+
+(1)~Consider the material particle acted on by no forces.
+The trajectories will be straight lines. (2)~Let us have a vertical
+standard. The arms $AA'$~and~$BB'$ are solidly attached and
+$A$ and $B$ are fixed (\Figref{7}). The only motion of the system is
+a rotation about~$AB$. $A'B'$ is a second axis about which a rigid
+body homogeneous and of revolution can rotate. The system
+has two degrees of freedom. We have to study the motion of the
+system. There will be no force function. Only rotations are
+possible (two independent ones around $AB$ and one around~$A'B'$).
+
+Analytically, the two problems are one and the same, for in
+both cases, $U = 0$ and the coefficients $E$,~$F$,~$G$ in~$2T$ are constants
+(which can always, by a linear transformation in $x$,~$y$, be reduced
+%% -----File: 045.png---Folio 35-------
+to $E = G = 1$, $F = 0$). Nevertheless, there is evidently no
+comparison between the motions in case~(1) and case~(2), so
+that to a certain extent, we are deceived by analytic methods.
+The assemblage of all possible positions of system~\Eqno{(2)} can be
+represented not on a plane, but on the surface of an anchor ring.
+\Graphic{7}{3in}{045}% [Illustration: \textsc{Fig.~7.}]
+
+We know since the researches of Poincaré that the study of
+trajectories represented by differential equations must be founded
+on analysis situs. For instance, $f(x, y, y') = 0$ is geometrically
+represented by a certain surface, and on this surface defines a
+geometrical correspondence as follows: for each point of the
+surface it defines a certain direction (with its sense) in the
+tangent plane. We have then to draw at each point of the surface
+a curve which is tangent to the direction thus defined.
+%% -----File: 046.png---Folio 36-------
+Poincaré showed that such a problem cannot be handled unless
+we know what the genus of the surface is. This already appears
+in a simple preliminary question which arises in that study. We
+have said that we have a certain direction at each point of our
+surface. Can we \emph{in general} do this without exception? In
+general we cannot. In each point, in general, we shall have a
+certain tangent direction defined, but there will be certain
+singular points in the correspondence. The only case in which
+the correspondence can be complete is when the surface is of
+genus one. For instance, there \emph{must} be singular points for the
+genus zero. In that case, Poincaré stated that every trajectory
+is either a closed one, or finishes in a singular point, or is asymptotic
+to a closed curve. For genus one, singular points may be
+absent, but the shapes of curves verifying the equation may
+yet be much more complicated.
+
+Differential equations of higher order will also of course (and
+did indeed in some parts of Poincaré's work) require the intervention
+of analysis situs. But the difficulty will be much greater,
+as in hyper-spaces this theory becomes as complicated as it was
+simple in Riemann's hands when applied to ordinary surfaces.
+These higher chapters of analysis situs begin, however, to be well
+known, and though they could not hitherto be applied to differential
+equations, their rôle is already clear, owing to the works
+of Picard and Poincaré, in the natural generalization of Riemann's
+original theory. I mean the difficult theory of algebraic surfaces
+and algebraic functions of two or more independent variables.
+
+In the line of partial differential equations, we must point out
+a very remarkable analogous example due to Volterra and concerning
+the problem of elasticity. Generally speaking, if the
+external forces and also the peripheric efforts acting on a homogeneous
+solid body are zero, so will be the stress at every point
+of its substance. More precisely in such a body of simply connected
+shape, stress could only appear under those conditions if
+singular points would exist where they would cease to obey the
+general laws known for their distribution. But the contrary can
+%% -----File: 047.png---Folio 37-------
+take place if the body has an annular form, and in fact Volterra
+practically constructed such annular bodies in which stress exists
+and can be experimentally perceived, without any external action
+and without any singular point.
+
+\Section{3.}{}
+
+But examples of a much more elementary character, belonging
+to the very beginning of the differential calculus, can be given.
+Let us consider a point-to-point correspondence, defined by such
+equations as
+\[
+X = f(x, y),\qquad Y = g(x, y).
+\]
+When does that system of equations admit one and only one
+solution in $x$,~$y$ if $X$,~$Y$ are supposed to be given?
+
+It is classical that this, above all, depends on the functional
+determinant
+%[F1: the vertical spacing in the matrix below could use some work]
+\[
+\frac{D(X,Y)}{D(x,y)} =
+\begin{vmatrix}
+  \pderiv{f}{x}&\pderiv{f}{y} \\[2ex]
+  \pderiv{g}{x}&\pderiv{g}{y}
+\end{vmatrix}.
+\]
+Suppose that this is not zero in a certain point $x_{0}$,~$y_{0}$. We are
+taught that in the \emph{neighborhood} of $(X_{0}, Y_{0})$ the system will have
+one and only one solution. The tempting conclusion is to
+suppose that if everywhere this determinant is not zero, then
+everywhere we will have a one-to-one correspondence. This is
+not true, and indeed errors have been committed on that subject.
+Even in the simplest case, in which the representation of the
+\emph{whole} plane of~$XY$ on the \emph{whole} plane of~$xy$ is considered, a supplementary
+condition at infinity must be added in order to
+ascertain that the transformation is one-to-one.
+
+But now let us replace our planes by two spheres, a correspondence
+being considered between a point $(x, y, z)$ of the surface
+of the first sphere, and a point $(X, Y, Z)$ of the surface of the
+second. In this case we find that if a condition analogous to
+that above holds at every point of the first surface it will actually
+insure a regular one-to-one correspondence.
+%% -----File: 048.png---Folio 38-------
+
+But if we replace our spheres by two anchor rings, the results
+will again be completely and utterly changed. Several points
+on the surface of one anchor ring may correspond to one and the
+same point on the surface of a second one, although in the
+neighborhood of each point everything seems to take place just
+as in a one-to-one correspondence. To see this, one has only
+to note that a point on the torus depends on two angles, $\Theta$,~$\varphi$.
+If we call $\Theta'$, $\varphi'$ the two similar angles for the second surface,
+we have only to define the correspondence by $\Theta' = p \Theta$, $\varphi' = q \varphi$,
+$p$ and~$q$ being two arbitrary integers.\footnote
+  {It is interesting to add that as far as ordinary (closed) surfaces are concerned,
+  the genus~$1$ is the only one for which such a paradoxical circumstance
+  can occur, in the sense that, if each point of a closed surface~$\Sigma$, of genus $g > 1$,
+  corresponds to one (and only one) point of a second closed surface~$\Sigma'$ \emph{of the
+  same genus}, and if, in the neighborhood of each point, the relation thus defined
+  takes the character of a one-to-one regular correspondence, it is such on the
+  whole surfaces.
+
+  This is easily seen in noting that, more generally, if we place ourselves
+  under the same conditions except that we do not suppose the two genera,
+  $g$,~$g'$ to be equal, and if $h$ be the number of points of~$\Sigma$ corresponding to \Typo{}{the} same
+  point on \Typo{$\Sigma$}{$\Sigma'$,} this number~$h$ (which must be the same everywhere, on account of
+  the absence of singular points) is connected with $g$,~$g'$ by the equation
+  $g-1 = h(g'-1)$: a fact which results from the generalized Euler's theorem.}
+
+A curious fact is that the same thing occurs with respect to
+two circles. It is evident that if two points respectively move
+on the two circumferences with uniform speed, one turning
+exactly $p$~times ($p$ being an integer) while the other turns once,
+each position of the former will correspond to $p$~distinct positions
+of the latter, although the ratio of speeds never changes signs,
+nor even becomes zero or infinite.
+
+Nothing of the kind could, as we saw, occur on the surfaces
+of our two spheres (nor of two hyperspheres in $n$-dim\-en\-sional
+space, if $n > 2$), so that, in that respect, the case of two dimensions
+proves more complicated than that of three or more
+dimensional spaces.
+
+These peculiar distinctions are closely connected with the fundamental
+distinctions of analysis situs. They are due to the fact
+that there are many ways essentially distinct from each other, of
+%% -----File: 049.png---Folio 39-------
+passing from one point to another of a circumference (according
+to the number of revolutions performed around the curve) whilst
+any line joining two points of the surface of a sphere can be
+changed into any other one by continuous deformation.
+
+This question of correspondences and Euler's theorem on
+polyhedra would give us the most simple and elementary instances
+in which the results are profoundly modified by considerations
+of analysis situs, if another one did not exist which
+concerns the principles of geometry themselves. I mean the
+Klein-Clifford conception of space. But since this conception
+has been fully and definitively developed in Klein's Evanston
+Colloquium, there is no use insisting on it. We want only to
+remember that this question bears to a high degree the general
+character of those which were spoken of in the present lecture.
+Klein-Clifford's space and Euclid's ordinary space are not only
+approximately, but fully and rigorously identical as long as
+the figures dealt with do not exceed certain dimensions. Nothing
+therefore can distinguish them from each other in their infinitesimal
+properties. Yet they prove quite different if sufficiently
+great distances are considered.
+
+This example, as you see, exactly like the previous ones,
+teaches us that some fundamental features of mathematical
+solutions may remain hidden as long as we confine ourselves
+to the details; so that in order to discover them we must necessarily
+turn our attention towards the mode of synthesis of those
+details which introduce the point of view of analysis situs.
+%% -----File: 050.png---Folio 40-------
+
+
+\Chapter{LECTURE IV}{Elementary Solutions of Partial Differential Equations
+and Green's Functions}
+\label{chapter:4}
+\fancyhead[CE]{\Heading{FOURTH LECTURE}}
+\fancyhead[CO]{\Heading{ELEMENTARY SOLUTIONS}}
+
+\Section{1.} {Elementary Solutions}
+
+The expressions we are going to speak of are a necessary base
+of the treatment of every linear partial differential equation,
+such as those which arise in physical problems. The simplest
+of them is the quantity employed in all theories of the classical
+equation of Laplace: $\nabla^{2}u = 0$; namely the elementary Newtonian
+potential~$1/r$, where
+\[
+r = \sqrt{(x-a)^{2} + (y-b)^{2} + (z-c)^{2}}
+\]
+and $(a, b, c)$ is a fixed point.
+
+The potential was really introduced first and gave rise to the
+study of the equation. All known theories of this equation
+rest on this foundation. The analogous equation for the plane is
+\[
+\pderiv[2]{u}{x} + \pderiv[2]{u}{y} = 0\Typo{}{.}
+\]
+Here we must consider the \emph{logarithmic potential}, $\log 1/r$, where
+$r = \sqrt{(x-a)^{2} + (y-b)^{2}}$. By this we see that if we wish
+to treat any other equation of the aforesaid type, we must try
+to construct again a similar solution which possesses the same
+properties as $1/r$ possesses in the case of the equation of Laplace.
+How is such a solution to be found? To understand it, we must
+examine certain properties of~$1/r$. First let us note that that
+quantity~$1/r$ is a function of the coördinates of two points
+$(x, y, z)$ and $(a, b, c)$ [the corresponding element $\log 1/r$ in the
+plane being similarly a function of $(x, y; a, b)$]. If considered
+as a function of $x$,~$y$,~$z$, alone ($a$,~$b$,~$c$, being supposed to be constant)
+in the real domain, $1/r$ is singular for $r = 0$; and $r = 0$
+%% -----File: 051.png---Folio 41-------
+only when $x = a$, $y = b$ and $z = c$ simultaneously. But for
+complex points, $1/r$ is singular when the line that joins $(x, y, z)$
+and $(a, b, c)$ is part of the isotropic cone of summit~$(a, b, c)$.
+
+This isotropic cone is not introduced by chance, and not any
+surface could be such a surface of singularity. It is what we
+shall call the \emph{characteristic cone} of the equation. We already
+met with the notion of characteristics in our first lecture, and
+saw that it is nothing else than the analytic translation of
+the physical expression ``waves.'' I must nevertheless come
+back to it this time in order to remind you that the word
+``waves'' has two different senses. The most obvious one is the
+following: Let a perturbation be produced anywhere, like sound;
+it is not immediately perceived at every other point. There are
+then points in space which the action has not reached in any
+given time. Therefore the wave, in that sense a surface,
+separates the medium into two portions (regions): the part
+which is at rest, and the other which is in motion due to the
+initial vibration. These two portions of space are contiguous.
+It was only in 1887 that Hugoniot, a French mathematician,
+who died prematurely, showed what the surface of the wave can
+be; and even his work was not well known until Duhem pointed
+out its importance in his work on mathematical physics.
+
+A second way of considering the wave is more in use among
+physicists. We have not in the first definition implied vibrations.
+If we now suppose that we have to deal with sinusoidal vibrations
+of the classical form, the motion is general and embraces
+all the space occupied by the air. Tracing the locus of all
+points of space in which the phase of the vibration is the
+same, we determine a certain wave surface (or surfaces).
+
+It is clear that these two senses of the word ``waves'' are
+utterly different. In the first case, we have space divided into
+two regions where different things take place, which is not so
+in the second case. Certainly, physically speaking, we feel a
+certain analogy between them. But for the analyst, there seems
+to be a gap between the two points of view.
+%% -----File: 052.png---Folio 42-------
+
+The gap is filled by a theorem of Delassus. Let us consider any
+linear partial differential equation of the second order, and suppose
+that $u$~is a solution which would be singular along all points
+of a certain surface, $\pi(x, y, z) = 0$. By making some very simple
+hypotheses as to the nature of the singularity, Delassus found
+that this surface must be a characteristic as defined in our first
+lecture; that is, it must verify, if the given equation is $\nabla^{2}u = 0$,
+the (non-linear) partial differential equation of the first order
+\[
+\left(\pderiv{\pi}{x}\right)^{2}
+  + \left(\pderiv{\pi}{y}\right)^{2}
+  + \left(\pderiv{\pi}{z}\right)^{2} = 0
+\]
+obtained by substituting for the partial derivatives of the second
+order of the unknown function~$u$ in the given equation, the
+corresponding squares or products of derivatives of the first
+order of~$\pi$ (the other terms of the given equation being considered
+as cancelled). This is the \emph{characteristic equation} corresponding
+to our problem. It is the same as the one found by Hugoniot
+in studying the problem from the first point of view. This third
+definition will show us the connection between the first two. In
+the first case, the wave corresponds to discontinuity, for the
+speeds and accelerations change suddenly at the wave surface:
+such a discontinuity is evidently a kind of singularity. In the
+vibratory motion the general equation contains the factor
+$\sin \mu\pi$ since $u = F \sin \mu\pi$, where $F$ is the parameter corresponding
+to the frequency, and $\pi$ is a function of $x$,~$y$,~$z$. This form of~$u$
+seems to show no singularity, for the sine is a holomorphic function\Typo{}{.}
+It is nevertheless what one may call ``practically singular.'' If
+we suppose that the absolute magnitude of~$\mu$ is large, the function
+varies very rapidly from $+1$~to~$-1$, it has derivatives which
+contain~$\mu$ in factor, and these derivatives are therefore very
+large. It has a resemblance to discontinuous function because
+of the large slope. So that, in what may be called ``approximative''
+analysis, it must be considered as analogous to certain
+discontinuous functions. From that point of view the three
+notions of waves are closely connected.
+%% -----File: 053.png---Folio 43-------
+
+This view of Delassus is the one which will interest us now
+because in the case of the elementary solution~$1/r$
+the characteristic
+cone is a surface of singularity. We see now in what
+direction we may look for the solution of the problem. We
+have to find what will be the characteristic cone or surface
+corresponding to it. Then we must construct a solution having
+this as a singularity. The first question is answered by the
+general theory of partial differential equations of the first order.
+We must have a conic point at~$(a, b, c)$. In general the characteristic
+cone is replaced by a \emph{characteristic conoid} which has
+curvilinear generatrices which correspond to the physical ``rays.''
+Secondly, we must build a solution which will have this for a
+surface of singularity. The first work of general character in this
+direction was that of Picard in 1891. He considered the case
+of two variables and treated more especially the equation
+\[
+\pderiv[2]{u}{x} + \pderiv[2]{u}{y} = cu\Typo{}{.}
+\Tag{(1')}
+\]
+Not every equation of the general type
+\[
+A \pderiv[2]{u}{x}
+  + B \frac{\partial^2 u}{\partial x\, \partial y}
+  + C \pderiv[2]{u}{y}
+  + 2D \pderiv{u}{x} + 2E \pderiv{u}{y} + Fu = 0
+\]
+can be reduced to that form. But in the elliptic case $(B^{2} - AC
+< 0)$ it can, by a proper change of independent variables, be
+reduced to the form
+\[
+\pderiv[2]{u}{x} + \pderiv[2]{u}{y} + a \pderiv{u}{x} + b \pderiv{u}{y} + cu = 0
+\Tag{(1)}
+\]
+(in which the characteristic lines are the isotropic lines of the
+plane). Sommerfeld and Hedrick treated this more general
+form and showed for equation~\Eqno{(1)}, as Picard had done for the
+equation~\Eqno{(1')}, that there exists an elementary solution, possessing
+all the essential properties of~$\log 1/r$. It is
+\[
+P \log 1/r + Q\Typo{}{,}
+\]
+$P$ and $Q$ being regular functions of $x$ and~$y$. $P$~has the value~$1$,
+%% -----File: 054.png---Folio 44-------
+$x = a$, $y = b$. In the hyperbolic case (real characteristics),
+the form to which the equation can be reduced is Laplace's form
+\Pagelabel{44}%
+\[
+\frac{\partial^{2} u}{\partial x \,\partial y}
+  +   \pderiv{u}{\Typo{u}{x}}%[** PP: N.B. Not ``a \pderiv{u}{x}'']
+  + b \pderiv{u}{y} + cu = 0
+\Tag{(2)}
+\]
+if the change of variables is real; and the corresponding elementary
+solution is of the type
+\[
+P \log \sqrt{(x-a)(y-b)} + Q\Typo{}{,}
+\]
+$P$ and $Q$ having the same significations as above ($P$~is nothing
+else than the function which plays the chief rôle in Riemann's
+method for equation~\Eqno{(2)}). Of course, if imaginary changes were
+admitted (which is possible only if the coefficients are supposed
+to be analytic) elliptic equations, as well as hyperbolic ones,
+could be reduced to the type~\Eqno{(2)} or as well,~\Eqno{(1)}. The only
+case in which that reduction is not at all possible, is when
+$B^{2} - AC = 0$, the parabolic case. This is a much more difficult
+case. It has been treated only recently. There is a new type
+of elementary solution which was given in 1911 by Hadamard in
+the \textit{Comptes Rendus}, and for the equation of heat with more than
+two variables by Georey that same year (in the same periodical).
+
+Even if we leave the parabolic case aside, the question has a
+new difficulty arising because it is not possible to simplify by
+changing variables as before when there are more than two of
+them, so that we must then treat the general case. The problem
+was, however, first treated in the case of
+\[
+\nabla^{2} u + a \pderiv{u}{x} + b \pderiv{u}{y} + c \pderiv{u}{z} + 1u = 0\Typo{}{.}
+\]
+But not every partial differential equation of the second order in
+three variables can be reduced to this form. It is important
+nevertheless. Holmgren obtained a solution in form analogous
+to $1/r$, namely $P/r$, where $P=1$ for $r=0$.
+
+If we wish to treat the general case where the coefficients are
+quite arbitrary, we must try first to form the surface of singularity
+which is the characteristic conoid. Suppose first that we
+%% -----File: 055.png---Folio 45-------
+have any regular characteristic surface of our equation and
+suppose that by a change of variables, $x = 0$ is the surface.
+Let us write $u = x^{p} F (x, y, z)$. One can show that, giving $p$
+any positive value, solutions of this form can be found, $F$ being
+regular. Such is not the case when $p$ is a negative integer; and
+this gives us again an interesting illustration of the considerations
+explained in our first lecture in connection with Schoenflies'
+theorem. Let $p$ be a negative integer and suppose that there is
+a solution. Then we have also other values of~$u$ of the form
+\[
+\frac{F(x, y, x)}{x^{p}} + F_{1}(x, y, z)\Typo{}{.}
+\]
+(We can form an infinity of these solutions because the differential
+equation possesses an infinity of regular solutions.) But those
+values of~$u$ can be written
+\[
+\frac{F + x^{p} F_{1}}{x^{p}}\Typo{}{,}
+\]
+\Typo{So}{so}
+that, if our question is possible, it has an infinity of solutions.
+By the same reasoning as in the first lecture, we must not wonder
+at its being in general not possible. There is again this balancing
+between infinity of solutions and their existence.
+
+But we have supposed our characteristic surface to be a
+regular one. If we deal with our characteristic \emph{conoid}, which
+has $(a, b, c)$ for a conic point, things behave differently; $p$~\emph{cannot}
+have an arbitrary value. If the number of independent variables
+is~$n$, we must have
+\[
+p = - \frac{n-2}{2}, \quad \text{or} \quad -\left(\frac{n-2}{2} + 1\right), \quad -\left(\frac{n-2}{2} + 2\right), \quad \dots\Typo{}{.}
+\]
+The first of these values is, however, the only essential one,
+because, if we have formed the (unique) solution corresponding
+to $p = \Typo{-(n-2)2}{-(n-2)/2}$,
+which depends on $x$,~$y$,~$z$, $a$,~$b$,~$c$, we can
+deduce all others from it: we need merely to differentiate with
+respect to $a$,~$b$,~$c$.
+
+If $n$ is even, those values of~$p$ become negative integers and
+%% -----File: 056.png---Folio 46-------
+therefore, on account of what we just said, there is, in general,
+no solution of the above form
+\[
+u = \frac{P}{\Gamma^{p}} + Q\Typo{}{.}
+\]
+We have to replace this by
+\[
+u = \frac{P}{\Gamma^{p}} + P_{1} \log \Gamma\Typo{}{,}
+\]
+in which $\Gamma$ would again be equal to~$r^{2}$, $r$~meaning a distance in
+$n$-dimensional space, if the higher terms (of the second order)
+of the given equation are of the form~$\nabla^{2} u$. However, if these
+terms are arbitrary, $\Gamma$~should be replaced by the first member
+of the equation of the characteristic conoid of summit~$(a, b, c)$.
+
+The functions $P$, $Q$, $P_{1}$ can easily be developed in convergent
+Taylor's series if the coefficients of the equation are analytic.
+If not, they still exist but are much more difficult to find. The
+first result of Picard, concerning the special equation~\Eqno{(1')}, was
+however, obtained (by successive approximations) without any
+assumption on the analyticity of~$c$: Later, E.~E.~Levi solved the
+problem in the same sense for the general elliptic equation.
+
+The principle of these methods of Picard and Levi in reality
+is the same. Both may be considered as peculiar cases of one
+indicated by Hilbert and consisting in the introduction of the
+first approximation, which presents a singularity of the required
+form, but does not need to verify the given equation. The
+investigation of the necessary complementary term leads
+again to an integral equation. I must add that, for equations
+of a higher order, the extension of this seems to offer
+difficulties of an entirely new kind, owing to the fact that the
+characteristic conoid generally admits other singularities than its
+summit (viz.\Typo{}{,} cuspidal lines). For the very special case in which
+there are no other terms than those of the highest order, the
+coefficients of those terms being constant, it has however been
+reduced to Abelian integrals by a beautiful analysis of Fredholm's.
+%% -----File: 057.png---Folio 47-------
+
+
+\Section{2.}{Green's Functions}
+
+Elementary solutions are a necessary instrument for the
+treatment of the partial differential equations of mathematical
+physics. They are not always sufficient. They are sufficient
+for the simplest of the problems alluded to in our first lecture,
+namely Cauchy's problem. But we know that for the elliptic
+case, this latter is not to be considered, and we have to
+face others, such as Dirichlet's problem. For Dirichlet's problem
+(i.\,e.\ to find~$u$ taking given values all over the surface of
+the volume~$S$, and satisfying $\nabla^{2} u = 0$), $1/r$ is \emph{not} a sufficient
+function. We must introduce a new function of the form $1/r + h$
+where $h$ is a regular function; and $h$ must be such that $1/r + h$
+must be zero at every point of the boundary surface. This is
+called \emph{Green's Function}. It is the potential produced on the
+surface~$S$ by a quantity of electricity placed at~$(a, b, c)$ interior
+to the surface, this surface being hollow, conducting, and maintained
+at the potential zero. This is its physical interpretation.
+
+For any other linear partial differential equation of the elliptic
+type, one has to consider such Green's functions in which the
+term~$1/r$ is to be replaced by the elementary solution (so that,
+at any rate, the formation of this latter is presupposed), $h$~still
+being a regular function (at least as long as $(a, b, c)$ remains fixed
+and interior to~$S$).
+
+Similar sorts of Green's functions are also known for higher
+differential equations, e.\,g.\ for the problem of an elastic plate
+rigidly fastened at its outline, the differential equation being
+then $\nabla^{2} \nabla^{2} u = 0$ (in two variables $x$ and~$y$ only) and the rôle of
+elementary solution being played by $r^{2} \log r$.
+
+Like $1/r$ and like the elementary solution itself, any Green's
+function depends on the coördinates of two points, $A(x, y, z)$
+and $B(a, b, c)$. But the chief interest in the study of those
+Green's functions, the important difference between them and
+the above mentioned fundamental solutions, corresponds to a
+similar difference between Cauchy's and Dirichlet's problems,
+such as defined in our first lecture. To understand this, let us
+%% -----File: 058.png---Folio 48-------
+remember that each of those two problems depends on three
+kinds of elements:
+\begin{itemize}
+\item[1.]{A given differential equation;}
+\item[2.]{A given surface (or hyper-surface in higher spaces)~$S$;}
+\item[3.]{A certain distribution of given quantities at the different
+points of~$S$.}
+\end{itemize}
+
+Each of those elements has of course its influence on the
+solution but not to the same degree. The influence of the form
+of the equation cannot but be a profound one. On the contrary,
+the influence of the quantities mentioned in~3 is comparatively
+superficial, in the sense that the calculations can be carried pretty
+far before introducing them. In other terms, if we compare this
+to a system of ordinary linear algebraic equations, the rôle of
+the first element may be compared to that of the coefficients of
+the unknowns (by the help of which such complicated expressions
+as the determinant and its minor determinants must be
+formed) while the rôle of the third element resembles that of the
+second members which have only to be multiplied respectively
+by the minor determinants before being substituted in the
+numerator.
+
+But as to the rôle of our second element, the shape of our
+surface~$S$, the answers are quite different according to cases.
+
+If we deal with Cauchy's problem, that shape plays just as
+superficial a rôle as the third element. For instance, in Riemann's
+method for Cauchy's problem concerning equation~\Eqno{(2)},
+every element of the solution can be calculated without knowing
+the shape of~$S$ (which in that case is replaced by a curve, the
+problem being two-dimensional) till the moment when they have
+to be substituted in a certain curvilinear integral which is to be
+taken along~$S$.
+
+But matters are completely different in that respect in the
+case of Dirichlet's problem. While one can practically say that
+there is only one Cauchy's problem for each equation, there is,
+for the same and unique equation $\nabla^{2} u = 0$, one Dirichlet's
+problem for the sphere, one for the ellipsoid, one for the parallelepipedon;
+%% -----File: 059.png---Folio 49-------
+and these different problems present very unequal
+difficulties.
+
+It is clear that the same differences will appear in the mode
+of treatment corresponding to the two problems. The elementary
+solution depends on nothing else than the given equation
+and the coördinates $x$,~$y$,~$z$, $a$,~$b$,~$c$, of the two points $A$,~$B$.
+
+The Green's function on the contrary depends, not only on
+this equation and these coördinates, but also on the form of
+the boundary~$S$.\footnote
+  {All these observations quite similarly hold for the``mixed problems''
+  alluded to in our first lecture, and for the expressions introduced in their
+  treatment corresponding to Green's functions.}
+
+The interesting question arising therefrom is to find how the
+properties of Green's functions are modified by the change of
+the shape of the surface. Let us replace $S$ by~$S'$, defined by its
+normal distance~$\delta n$ (which may be variable from one point of~$S$
+to another). Take two given points $A$~and~$B$ within~$S$. Then
+there is a certain form of Green's function~$g^{B}_{A}$ for the surface~$S$,
+and if we change from~$S$ to~$S'$, $g^{B}_{A}$~changes. The change is
+\Pagelabel{49}%[** PP: Notation??]
+\[
+\delta g^{B}_{A} = \iint \deriv{g^{n}A}{n}\, \deriv{g^{n}B}{n}\, \delta n\, dS\Typo{}{;}
+\Tag{(3)}
+\]
+$\deriv{g^{n}A}{n}$ is the rate of change of~$g_{A}$ relative to the change of~$n$.
+
+Here $\delta n\, dS$ is an element of volume comprised between the
+surfaces $S$,~$S'$. Similar formulas hold for Green's functions for a
+plane area. They are like those given by the calculus of variations
+of integrals, though its methods are not directly applicable.
+
+A curious consequence is that from all the Green functions
+for all the elliptic partial differential equations, we can deduce
+by proper differentiations expressions verifying one and the
+same integro-differential equation, namely
+\[
+S \phi^{B}_{A} = S \phi^{n}_{A} \phi^{B}_{n}\, \delta n\, dS
+\]
+
+The fact that in the second member of the equation~\Eqno{(3)}, the
+coefficient of $\delta n\, dS$ is quadratic and symmetric with respect to
+%% -----File: 060.png---Folio 50-------
+expressions depending on the points $A$~and~$B$ respectively, is also
+an important one. Useful inequalities, which could not easily
+be obtained otherwise, can be deduced therefrom.
+
+Besides that study of the variation of the numerical values
+of Green's functions, the influence of the shape of~$S$ can be
+studied from another point of view, I mean its influence on their
+analytical properties, and this has been the occasion for important
+recent results. The complementary term~$h$ in a Green's function
+remains regular as long as one of the points remains fixed and
+interior to the considered domain; but it offers a peculiar
+singularity when the two points $A$,~$B$ simultaneously approach
+the same point~$P$ of the boundary; and that singularity looks
+at first like a very difficult one. Its study is nevertheless
+simplified by the fact that it only depends on the shape of~$S$
+\emph{in the immediate neighborhood} of~$P$.
+\Figure{8}{3in}{060}% [Illustration: \textsc{Fig.~8.}]
+
+In the case of the plane, for instance, if two closed contours
+$S$,~$S'$, limiting two different areas have a certain arc~$MN$ in
+common\footnote
+  {The two contours are understood to be one and the same side of that
+  arc~$MN$.}
+(\Figref{8}), if $P$ is a point of this arc, and if $G$,~$G'$ be the
+two Green's functions corresponding respectively to those contours,
+the difference $G - G'$ will be a completely regular function
+(admitting a development in a convergent Taylor's series) when
+$A$ and $B$ are both very near to~$P$.
+%% -----File: 061.png---Folio 51-------
+
+We have now to inquire what the singularity of~$G$, for instance,
+will be. After having received a first partial answer in interesting
+papers by several Italian geometers, this question has been
+completely solved by E.~E. Levi for a function analogous to the
+ordinary Green's function, and more recently by P.~Levy for
+this latter itself.
+
+The answer thus obtained is remarkably simple in the case
+of two dimensions. P.~Levy also works out the three-dimensional
+problem, but there the results are much more complicated.
+
+As to Green's function as a whole (and not only the singular
+part of it) it must be well understood that its value for any two
+given points of the area or even such elements as its normal
+derivative in one point of the contour, profoundly depends on
+the form of every part of this latter, however distant from the
+point or points in question.
+
+By paying attention to this fact, we must expect, on account
+of what was seen in the preceding lecture, that considerations of
+analysis situs will be important in that question. At first this
+does not seem to be the case, and the most important methods
+for the resolution of Dirichlet's problem are common to areas
+of any genus (although with some modifications of detail, as
+will be seen for Fredholm's method in Kellogg's Dissertation).
+But other views of the problem will show that the influence of
+analysis situs does exist here and is perhaps even more astonishingly
+profound than in any of the questions examined in our last
+lecture.
+
+If we consider again Dirichlet's problem for an area in the
+plane, we shall see that the analytical properties of the corresponding
+Green's function are very different if that area has one
+or several boundaries.
+
+Let us take the first case. In this case, the plane area can
+be represented conformally on a circle of unit radius with the
+origin as center. It is easily seen that, in such a conformal
+representation, Green's function keeps its values, and this brings
+to light a remarkable consequence concerning the six Green's
+%% -----File: 062.png---Folio 52-------
+functions generated by four points taken two by two. The
+six quantities have a relation between them and give rise to a
+peculiar sort of geometry, which not only resembles the ordinary
+non-Euclidean geometry, but can be reduced to it by a simple
+transformation.
+
+In an area with two boundaries (annular area) matters are
+quite different. Schottky has shown that if we take two such
+areas, $S$,~$S'$, having each two boundaries, they are \emph{not} in general
+conformally representable on one another. Each one of them
+will be represented on the area between two concentric circles.
+But the ratio of the radii of these circles must, in each case, be
+chosen properly, and, therefore, will not, in general, be the same
+for~$\Sigma$ and for~$\Sigma'$.
+
+In this last case, the relation between the six Green functions
+will \emph{not} hold, and the properties of our Green's functions will be
+far less simple. They will become still more complicated for
+more than two boundaries. We again have here an important
+instance of the rôle played by analysis situs in analytical properties,
+and as we have stated that Green's functions are related
+to all the chief topics treated in our preceding lectures, this is
+perhaps the best conclusion to be given to the ensemble of them.
+\clearpage
+%% -----File: 063.png---Folio 53-------
+
+\fancyhead{}
+\begin{center}
+\makebox[0pt][c]{\textbf{\Huge Columbia University Press}}
+
+\textbf{Columbia University in the City of New York}\\[12pt]
+
+\textbf{\large Lemcke \& Buechner, Agents}
+
+\textbf{30--32 West 27th Street}\hfill \textbf{NEW YORK}
+
+\Rules
+
+\textbf{Publications of the \\
+Ernest Kempton Adams Fund for Physical Research}
+
+\rule{1.5in}{0.5pt}
+\end{center}
+
+\par\footnotesize%
+These publications are distributed under the Adams Fund to many libraries
+and to a limited number of individuals, but may also be bought at cost from the
+Columbia University Press.
+\medskip
+
+\Advert{Number One.}{Fields of Force.}{Vilhelm Friman Koren Bjerknes}{Professor of Physics
+in the University of Stockholm. A course of lectures delivered at Columbia University,
+1905-6.}
+{Hydrodynamic fields. Electromagnetic fields. Analogies between the two. Supplementary lecture on
+application of hydrodynamics to meteorology. 160~pp. \$1.00.}
+
+\Advert{Number Two.}{The Theory of Electrons and its Application to the Phenomena of Light and
+Radiant Heat.}{H.~A. Lorentz}{Professor of Physics in the University of Leyden.
+A course of lectures delivered at Columbia University, 1906--7. With added notes.
+332~pp. Edition exhausted. Published in another edition by Teubner.}{}
+
+\Advert{Number Three.}{Eight Lectures on Theoretical Physics.}{Max Planck}{Professor of
+Theoretical Physics in the University of Berlin. A course of lectures delivered at
+Columbia University in 1909, translated by \textsc{A.~P. Wills}, Professor of Mathematical
+Physics in Colum\-bia University.}
+{Introduction: Reversibility and Irreversibility. Thermodynamic equilibrium in dilute solutions.
+Atomistic theory of matter. Equation of state of a monatomic gas. Radiation, electrodynamic theory.
+Statistical theory. Principle of least work. Principle of relativity. 130~pp. \$1.00.}
+
+\Advert{Number Four.}{Graphical Methods.}{C.~Runge}{Professor of Applied Mathematics in the
+University of Göttingen. A course of lectures delivered at Columbia University,
+1909--10.}
+{Graphical calculation. The graphical representation of functions of one or more independent variables.
+The graphical methods of the differential and integral calculus. 148~pp. \$1.50.}
+
+\Advert{Number Five.}{Four Lectures on Mathematics.}{J.~Hadamard}{Member of the Institute,
+Professor in the \Typo{Collége}{Collège} de France and in the École Polytechnique. A course of lectures
+delivered at Columbia University in 1911.}
+{Linear partial differential equations and boundary conditions. Contemporary researches in differential
+and integral equations. Analysis situs. Elementary solutions of partial differential equations
+and Green's functions. 53~pp. \$0.75.}
+
+\Advert{Number Six.}{Researches in Physical Optics, Part~I, with especial reference to the radiation
+of electrons.}{R.~W. Wood}{Adams Research Fellow, 1913, Professor of Experimental
+Physics in the Johns Hopkins University. 134~pp. With 10~plates. Edition exhausted.}{}
+
+\Advert{Number Seven.}{Neuere Probleme der theoretischen Physik.}{W.~Wien}{Professor of
+Physics in the University of Würzburg. A course of six lectures delivered at Columbia
+University in 1913.}
+{Introduction: Derivation of the radiation equation. Specific heat theory of Debye. Newer radiation
+theory of Planck. Theory of electric conduction in metals, electron theory for metals. The Einstein
+fluctuations. Theory of Röntgen rays. Method of determining wave length. Photo-electric effect and
+emission of light by canal ray particles. 76~pp. \$0.75.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%% GUTENBERG LICENSE %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+
+\phantomsection
+\pdfbookmark[-1]{Back Matter}{Back Matter}
+\pdfbookmark[0]{PG License}{Project Gutenberg License}
+\fancyhead[C]{\Heading{LICENSING}}
+
+\begin{PGtext}
+End of Project Gutenberg's Four Lectures on Mathematics, by Jacques Hadamard
+
+*** END OF THIS PROJECT GUTENBERG EBOOK FOUR LECTURES ON MATHEMATICS ***
+
+***** This file should be named 29788-pdf.pdf or 29788-pdf.zip *****
+This and all associated files of various formats will be found in:
+        http://www.gutenberg.org/2/9/7/8/29788/
+
+Produced by Andrew D. Hwang, Brenda Lewis and the Online
+Distributed Proofreading Team at http://www.pgdp.net (This
+file was produced from images from the Cornell University
+Library: Historical Mathematics Monographs collection.)
+
+
+Updated editions will replace the previous one--the old editions
+will be renamed.
+
+Creating the works from public domain print editions means that no
+one owns a United States copyright in these works, so the Foundation
+(and you!) can copy and distribute it in the United States without
+permission and without paying copyright royalties.  Special rules,
+set forth in the General Terms of Use part of this license, apply to
+copying and distributing Project Gutenberg-tm electronic works to
+protect the PROJECT GUTENBERG-tm concept and trademark.  Project
+Gutenberg is a registered trademark, and may not be used if you
+charge for the eBooks, unless you receive specific permission.  If you
+do not charge anything for copies of this eBook, complying with the
+rules is very easy.  You may use this eBook for nearly any purpose
+such as creation of derivative works, reports, performances and
+research.  They may be modified and printed and given away--you may do
+practically ANYTHING with public domain eBooks.  Redistribution is
+subject to the trademark license, especially commercial
+redistribution.
+
+
+
+*** START: FULL LICENSE ***
+
+THE FULL PROJECT GUTENBERG LICENSE
+PLEASE READ THIS BEFORE YOU DISTRIBUTE OR USE THIS WORK
+
+To protect the Project Gutenberg-tm mission of promoting the free
+distribution of electronic works, by using or distributing this work
+(or any other work associated in any way with the phrase "Project
+Gutenberg"), you agree to comply with all the terms of the Full Project
+Gutenberg-tm License (available with this file or online at
+http://gutenberg.org/license).
+
+
+Section 1.  General Terms of Use and Redistributing Project Gutenberg-tm
+electronic works
+
+1.A.  By reading or using any part of this Project Gutenberg-tm
+electronic work, you indicate that you have read, understand, agree to
+and accept all the terms of this license and intellectual property
+(trademark/copyright) agreement.  If you do not agree to abide by all
+the terms of this agreement, you must cease using and return or destroy
+all copies of Project Gutenberg-tm electronic works in your possession.
+If you paid a fee for obtaining a copy of or access to a Project
+Gutenberg-tm electronic work and you do not agree to be bound by the
+terms of this agreement, you may obtain a refund from the person or
+entity to whom you paid the fee as set forth in paragraph 1.E.8.
+
+1.B.  "Project Gutenberg" is a registered trademark.  It may only be
+used on or associated in any way with an electronic work by people who
+agree to be bound by the terms of this agreement.  There are a few
+things that you can do with most Project Gutenberg-tm electronic works
+even without complying with the full terms of this agreement.  See
+paragraph 1.C below.  There are a lot of things you can do with Project
+Gutenberg-tm electronic works if you follow the terms of this agreement
+and help preserve free future access to Project Gutenberg-tm electronic
+works.  See paragraph 1.E below.
+
+1.C.  The Project Gutenberg Literary Archive Foundation ("the Foundation"
+or PGLAF), owns a compilation copyright in the collection of Project
+Gutenberg-tm electronic works.  Nearly all the individual works in the
+collection are in the public domain in the United States.  If an
+individual work is in the public domain in the United States and you are
+located in the United States, we do not claim a right to prevent you from
+copying, distributing, performing, displaying or creating derivative
+works based on the work as long as all references to Project Gutenberg
+are removed.  Of course, we hope that you will support the Project
+Gutenberg-tm mission of promoting free access to electronic works by
+freely sharing Project Gutenberg-tm works in compliance with the terms of
+this agreement for keeping the Project Gutenberg-tm name associated with
+the work.  You can easily comply with the terms of this agreement by
+keeping this work in the same format with its attached full Project
+Gutenberg-tm License when you share it without charge with others.
+
+1.D.  The copyright laws of the place where you are located also govern
+what you can do with this work.  Copyright laws in most countries are in
+a constant state of change.  If you are outside the United States, check
+the laws of your country in addition to the terms of this agreement
+before downloading, copying, displaying, performing, distributing or
+creating derivative works based on this work or any other Project
+Gutenberg-tm work.  The Foundation makes no representations concerning
+the copyright status of any work in any country outside the United
+States.
+
+1.E.  Unless you have removed all references to Project Gutenberg:
+
+1.E.1.  The following sentence, with active links to, or other immediate
+access to, the full Project Gutenberg-tm License must appear prominently
+whenever any copy of a Project Gutenberg-tm work (any work on which the
+phrase "Project Gutenberg" appears, or with which the phrase "Project
+Gutenberg" is associated) is accessed, displayed, performed, viewed,
+copied or distributed:
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
+
+1.E.2.  If an individual Project Gutenberg-tm electronic work is derived
+from the public domain (does not contain a notice indicating that it is
+posted with permission of the copyright holder), the work can be copied
+and distributed to anyone in the United States without paying any fees
+or charges.  If you are redistributing or providing access to a work
+with the phrase "Project Gutenberg" associated with or appearing on the
+work, you must comply either with the requirements of paragraphs 1.E.1
+through 1.E.7 or obtain permission for the use of the work and the
+Project Gutenberg-tm trademark as set forth in paragraphs 1.E.8 or
+1.E.9.
+
+1.E.3.  If an individual Project Gutenberg-tm electronic work is posted
+with the permission of the copyright holder, your use and distribution
+must comply with both paragraphs 1.E.1 through 1.E.7 and any additional
+terms imposed by the copyright holder.  Additional terms will be linked
+to the Project Gutenberg-tm License for all works posted with the
+permission of the copyright holder found at the beginning of this work.
+
+1.E.4.  Do not unlink or detach or remove the full Project Gutenberg-tm
+License terms from this work, or any files containing a part of this
+work or any other work associated with Project Gutenberg-tm.
+
+1.E.5.  Do not copy, display, perform, distribute or redistribute this
+electronic work, or any part of this electronic work, without
+prominently displaying the sentence set forth in paragraph 1.E.1 with
+active links or immediate access to the full terms of the Project
+Gutenberg-tm License.
+
+1.E.6.  You may convert to and distribute this work in any binary,
+compressed, marked up, nonproprietary or proprietary form, including any
+word processing or hypertext form.  However, if you provide access to or
+distribute copies of a Project Gutenberg-tm work in a format other than
+"Plain Vanilla ASCII" or other format used in the official version
+posted on the official Project Gutenberg-tm web site (www.gutenberg.org),
+you must, at no additional cost, fee or expense to the user, provide a
+copy, a means of exporting a copy, or a means of obtaining a copy upon
+request, of the work in its original "Plain Vanilla ASCII" or other
+form.  Any alternate format must include the full Project Gutenberg-tm
+License as specified in paragraph 1.E.1.
+
+1.E.7.  Do not charge a fee for access to, viewing, displaying,
+performing, copying or distributing any Project Gutenberg-tm works
+unless you comply with paragraph 1.E.8 or 1.E.9.
+
+1.E.8.  You may charge a reasonable fee for copies of or providing
+access to or distributing Project Gutenberg-tm electronic works provided
+that
+
+- You pay a royalty fee of 20% of the gross profits you derive from
+     the use of Project Gutenberg-tm works calculated using the method
+     you already use to calculate your applicable taxes.  The fee is
+     owed to the owner of the Project Gutenberg-tm trademark, but he
+     has agreed to donate royalties under this paragraph to the
+     Project Gutenberg Literary Archive Foundation.  Royalty payments
+     must be paid within 60 days following each date on which you
+     prepare (or are legally required to prepare) your periodic tax
+     returns.  Royalty payments should be clearly marked as such and
+     sent to the Project Gutenberg Literary Archive Foundation at the
+     address specified in Section 4, "Information about donations to
+     the Project Gutenberg Literary Archive Foundation."
+
+- You provide a full refund of any money paid by a user who notifies
+     you in writing (or by e-mail) within 30 days of receipt that s/he
+     does not agree to the terms of the full Project Gutenberg-tm
+     License.  You must require such a user to return or
+     destroy all copies of the works possessed in a physical medium
+     and discontinue all use of and all access to other copies of
+     Project Gutenberg-tm works.
+
+- You provide, in accordance with paragraph 1.F.3, a full refund of any
+     money paid for a work or a replacement copy, if a defect in the
+     electronic work is discovered and reported to you within 90 days
+     of receipt of the work.
+
+- You comply with all other terms of this agreement for free
+     distribution of Project Gutenberg-tm works.
+
+1.E.9.  If you wish to charge a fee or distribute a Project Gutenberg-tm
+electronic work or group of works on different terms than are set
+forth in this agreement, you must obtain permission in writing from
+both the Project Gutenberg Literary Archive Foundation and Michael
+Hart, the owner of the Project Gutenberg-tm trademark.  Contact the
+Foundation as set forth in Section 3 below.
+
+1.F.
+
+1.F.1.  Project Gutenberg volunteers and employees expend considerable
+effort to identify, do copyright research on, transcribe and proofread
+public domain works in creating the Project Gutenberg-tm
+collection.  Despite these efforts, Project Gutenberg-tm electronic
+works, and the medium on which they may be stored, may contain
+"Defects," such as, but not limited to, incomplete, inaccurate or
+corrupt data, transcription errors, a copyright or other intellectual
+property infringement, a defective or damaged disk or other medium, a
+computer virus, or computer codes that damage or cannot be read by
+your equipment.
+
+1.F.2.  LIMITED WARRANTY, DISCLAIMER OF DAMAGES - Except for the "Right
+of Replacement or Refund" described in paragraph 1.F.3, the Project
+Gutenberg Literary Archive Foundation, the owner of the Project
+Gutenberg-tm trademark, and any other party distributing a Project
+Gutenberg-tm electronic work under this agreement, disclaim all
+liability to you for damages, costs and expenses, including legal
+fees.  YOU AGREE THAT YOU HAVE NO REMEDIES FOR NEGLIGENCE, STRICT
+LIABILITY, BREACH OF WARRANTY OR BREACH OF CONTRACT EXCEPT THOSE
+PROVIDED IN PARAGRAPH F3.  YOU AGREE THAT THE FOUNDATION, THE
+TRADEMARK OWNER, AND ANY DISTRIBUTOR UNDER THIS AGREEMENT WILL NOT BE
+LIABLE TO YOU FOR ACTUAL, DIRECT, INDIRECT, CONSEQUENTIAL, PUNITIVE OR
+INCIDENTAL DAMAGES EVEN IF YOU GIVE NOTICE OF THE POSSIBILITY OF SUCH
+DAMAGE.
+
+1.F.3.  LIMITED RIGHT OF REPLACEMENT OR REFUND - If you discover a
+defect in this electronic work within 90 days of receiving it, you can
+receive a refund of the money (if any) you paid for it by sending a
+written explanation to the person you received the work from.  If you
+received the work on a physical medium, you must return the medium with
+your written explanation.  The person or entity that provided you with
+the defective work may elect to provide a replacement copy in lieu of a
+refund.  If you received the work electronically, the person or entity
+providing it to you may choose to give you a second opportunity to
+receive the work electronically in lieu of a refund.  If the second copy
+is also defective, you may demand a refund in writing without further
+opportunities to fix the problem.
+
+1.F.4.  Except for the limited right of replacement or refund set forth
+in paragraph 1.F.3, this work is provided to you 'AS-IS' WITH NO OTHER
+WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+WARRANTIES OF MERCHANTIBILITY OR FITNESS FOR ANY PURPOSE.
+
+1.F.5.  Some states do not allow disclaimers of certain implied
+warranties or the exclusion or limitation of certain types of damages.
+If any disclaimer or limitation set forth in this agreement violates the
+law of the state applicable to this agreement, the agreement shall be
+interpreted to make the maximum disclaimer or limitation permitted by
+the applicable state law.  The invalidity or unenforceability of any
+provision of this agreement shall not void the remaining provisions.
+
+1.F.6.  INDEMNITY - You agree to indemnify and hold the Foundation, the
+trademark owner, any agent or employee of the Foundation, anyone
+providing copies of Project Gutenberg-tm electronic works in accordance
+with this agreement, and any volunteers associated with the production,
+promotion and distribution of Project Gutenberg-tm electronic works,
+harmless from all liability, costs and expenses, including legal fees,
+that arise directly or indirectly from any of the following which you do
+or cause to occur: (a) distribution of this or any Project Gutenberg-tm
+work, (b) alteration, modification, or additions or deletions to any
+Project Gutenberg-tm work, and (c) any Defect you cause.
+
+
+Section  2.  Information about the Mission of Project Gutenberg-tm
+
+Project Gutenberg-tm is synonymous with the free distribution of
+electronic works in formats readable by the widest variety of computers
+including obsolete, old, middle-aged and new computers.  It exists
+because of the efforts of hundreds of volunteers and donations from
+people in all walks of life.
+
+Volunteers and financial support to provide volunteers with the
+assistance they need, are critical to reaching Project Gutenberg-tm's
+goals and ensuring that the Project Gutenberg-tm collection will
+remain freely available for generations to come.  In 2001, the Project
+Gutenberg Literary Archive Foundation was created to provide a secure
+and permanent future for Project Gutenberg-tm and future generations.
+To learn more about the Project Gutenberg Literary Archive Foundation
+and how your efforts and donations can help, see Sections 3 and 4
+and the Foundation web page at http://www.pglaf.org.
+
+
+Section 3.  Information about the Project Gutenberg Literary Archive
+Foundation
+
+The Project Gutenberg Literary Archive Foundation is a non profit
+501(c)(3) educational corporation organized under the laws of the
+state of Mississippi and granted tax exempt status by the Internal
+Revenue Service.  The Foundation's EIN or federal tax identification
+number is 64-6221541.  Its 501(c)(3) letter is posted at
+http://pglaf.org/fundraising.  Contributions to the Project Gutenberg
+Literary Archive Foundation are tax deductible to the full extent
+permitted by U.S. federal laws and your state's laws.
+
+The Foundation's principal office is located at 4557 Melan Dr. S.
+Fairbanks, AK, 99712., but its volunteers and employees are scattered
+throughout numerous locations.  Its business office is located at
+809 North 1500 West, Salt Lake City, UT 84116, (801) 596-1887, email
+business@pglaf.org.  Email contact links and up to date contact
+information can be found at the Foundation's web site and official
+page at http://pglaf.org
+
+For additional contact information:
+     Dr. Gregory B. Newby
+     Chief Executive and Director
+     gbnewby@pglaf.org
+
+
+Section 4.  Information about Donations to the Project Gutenberg
+Literary Archive Foundation
+
+Project Gutenberg-tm depends upon and cannot survive without wide
+spread public support and donations to carry out its mission of
+increasing the number of public domain and licensed works that can be
+freely distributed in machine readable form accessible by the widest
+array of equipment including outdated equipment.  Many small donations
+($1 to $5,000) are particularly important to maintaining tax exempt
+status with the IRS.
+
+The Foundation is committed to complying with the laws regulating
+charities and charitable donations in all 50 states of the United
+States.  Compliance requirements are not uniform and it takes a
+considerable effort, much paperwork and many fees to meet and keep up
+with these requirements.  We do not solicit donations in locations
+where we have not received written confirmation of compliance.  To
+SEND DONATIONS or determine the status of compliance for any
+particular state visit http://pglaf.org
+
+While we cannot and do not solicit contributions from states where we
+have not met the solicitation requirements, we know of no prohibition
+against accepting unsolicited donations from donors in such states who
+approach us with offers to donate.
+
+International donations are gratefully accepted, but we cannot make
+any statements concerning tax treatment of donations received from
+outside the United States.  U.S. laws alone swamp our small staff.
+
+Please check the Project Gutenberg Web pages for current donation
+methods and addresses.  Donations are accepted in a number of other
+ways including checks, online payments and credit card donations.
+To donate, please visit: http://pglaf.org/donate
+
+
+Section 5.  General Information About Project Gutenberg-tm electronic
+works.
+
+Professor Michael S. Hart is the originator of the Project Gutenberg-tm
+concept of a library of electronic works that could be freely shared
+with anyone.  For thirty years, he produced and distributed Project
+Gutenberg-tm eBooks with only a loose network of volunteer support.
+
+
+Project Gutenberg-tm eBooks are often created from several printed
+editions, all of which are confirmed as Public Domain in the U.S.
+unless a copyright notice is included.  Thus, we do not necessarily
+keep eBooks in compliance with any particular paper edition.
+
+
+Most people start at our Web site which has the main PG search facility:
+
+     http://www.gutenberg.org
+
+This Web site includes information about Project Gutenberg-tm,
+including how to make donations to the Project Gutenberg Literary
+Archive Foundation, how to help produce our new eBooks, and how to
+subscribe to our email newsletter to hear about new eBooks.
+\end{PGtext}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                                                                         %
+% End of Project Gutenberg's Four Lectures on Mathematics, by Jacques Hadamard
+%                                                                         %
+% *** END OF THIS PROJECT GUTENBERG EBOOK FOUR LECTURES ON MATHEMATICS ***%
+%                                                                         %
+% ***** This file should be named 29788-t.tex or 29788-t.zip *****        %
+% This and all associated files of various formats will be found in:      %
+%         http://www.gutenberg.org/2/9/7/8/29788/                         %
+%                                                                         %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+\end{document}
+
+###
+@ControlwordReplace = (
+  ['\\Appendix', 'Appendix. '],
+  ['\\Prologue', 'Prologue. ']
+  );
+
+@ControlwordArguments = (
+  ['\\item', 0, 1, '', ' '],
+  ['\\Chapter', 1, 1, '', ' ', 1, 1, '', ''],
+  ['\\Section', 1, 1, '', ' ', 1, 1, '', ''],
+  ['\\Pagelabel', 1, 0, '', ''],
+  ['\\Figref', 1, 1, 'Fig. ', ''],
+  ['\\Eqref', 1, 1, '', ' ', 1, 1, '(', ')'],
+  ['\\Pageref', 1, 1, 'page ', ''],
+  ['\\Figure', 1, 0, '', '', 1, 0, '[Illustration]', '', 1, 0, '', ''],
+  ['\\Graphic', 1, 0, '', '', 1, 0, '[Illustration]', '', 1, 0, '', ''],
+  ['\\TocBox', 1, 0, '', '', 1, 1, '', ''],
+  ['\\Typo', 1, 0, '', '', 1, 1, '', ''],
+  ['\\Advert', 1, 1, '', ' ', 1, 1, '', ' ', 1, 1, '', ' ', 1, 1, '', ' ', 1, 1, '', ' '],
+  ['\\hyperref', 0, 0, '', ''],
+  ['\\label', 1, 0, '', '']
+  );
+###
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2009.6.29)  24 AUG 2009 12:59
+entering extended mode
+ %&-line parsing enabled.
+**29788-t.tex
+(./29788-t.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/book.cls
+Document Class: book 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/leqno.clo
+File: leqno.clo 1998/08/17 v1.1c Standard LaTeX option (left equation numbers)
+) (/usr/share/texmf-texlive/tex/latex/base/bk12.clo
+File: bk12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2006/05/05 v1.1b Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def
+File: latin1.def 2006/05/05 v1.1b Input encoding file
+)) (/usr/share/texmf-texlive/tex/latex/base/fix-cm.sty
+Package: fix-cm 2006/03/24 v1.1n fixes to LaTeX
+(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)) (/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen103
+)) (/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+) (/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks17
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks18
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) (/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+)) (/usr/share/texmf-texlive/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+) (/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks21
+) (/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+) (/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+\Gread@gobject=\count100
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+) (/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip46
+\f@ncyO@elh=\skip47
+\f@ncyO@erh=\skip48
+\f@ncyO@olh=\skip49
+\f@ncyO@orh=\skip50
+\f@ncyO@elf=\skip51
+\f@ncyO@erf=\skip52
+\f@ncyO@olf=\skip53
+\f@ncyO@orf=\skip54
+) (/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2002/07/08 v3.2 Page Geometry
+\Gm@cnth=\count101
+\Gm@cntv=\count102
+\c@Gm@tempcnt=\count103
+\Gm@bindingoffset=\dimen114
+\Gm@wd@mp=\dimen115
+\Gm@odd@mp=\dimen116
+\Gm@even@mp=\dimen117
+\Gm@dimlist=\toks22
+) (/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2007/02/07 v6.75r Hypertext links for LaTeX
+\@linkdim=\dimen118
+\Hy@linkcounter=\count104
+\Hy@pagecounter=\count105
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2007/02/07 v6.75r Hyperref: PDFDocEncoding definition (HO)
+) (/etc/texmf/tex/latex/config/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+) (/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2006/08/22 v2.4 Connects package keyval with LaTeX options (
+HO)
+)
+Package hyperref Info: Option `hyperfootnotes' set `false' on input line 2238.
+Package hyperref Info: Option `bookmarks' set `true' on input line 2238.
+Package hyperref Info: Option `linktocpage' set `false' on input line 2238.
+Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 223
+8.
+Package hyperref Info: Option `pdfpagelabels' set `true' on input line 2238.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 2238.
+Package hyperref Info: Option `colorlinks' set `true' on input line 2238.
+Package hyperref Info: Hyper figures OFF on input line 2288.
+Package hyperref Info: Link nesting OFF on input line 2293.
+Package hyperref Info: Hyper index ON on input line 2296.
+Package hyperref Info: Plain pages OFF on input line 2303.
+Package hyperref Info: Backreferencing OFF on input line 2308.
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 2444.
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2005/06/27  ver 3.2  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 2599.
+\Fld@menulength=\count106
+\Field@Width=\dimen119
+\Fld@charsize=\dimen120
+\Choice@toks=\toks23
+\Field@toks=\toks24
+Package hyperref Info: Hyper figures OFF on input line 3102.
+Package hyperref Info: Link nesting OFF on input line 3107.
+Package hyperref Info: Hyper index ON on input line 3110.
+Package hyperref Info: backreferencing OFF on input line 3117.
+Package hyperref Info: Link coloring ON on input line 3120.
+\Hy@abspage=\count107
+\c@Item=\count108
+)
+*hyperref using driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2007/02/07 v6.75r Hyperref driver for pdfTeX
+\Fld@listcount=\count109
+)
+\TmpLen=\skip55
+\Adindent=\skip56
+(./29788-t.aux)
+\openout1 = `29788-t.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 403.
+LaTeX Font Info:    ... okay on input line 403.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 403.
+LaTeX Font Info:    ... okay on input line 403.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 403.
+LaTeX Font Info:    ... okay on input line 403.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 403.
+LaTeX Font Info:    ... okay on input line 403.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 403.
+LaTeX Font Info:    ... okay on input line 403.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 403.
+LaTeX Font Info:    ... okay on input line 403.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 403.
+LaTeX Font Info:    ... okay on input line 403.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 403.
+LaTeX Font Info:    ... okay on input line 403.
+-------------------- Geometry parameters
+paper: class default
+landscape: --
+twocolumn: --
+twoside: true
+asymmetric: --
+h-parts: 119.24548pt, 316.18124pt, 178.86827pt
+v-parts: 105.514pt, 531.18494pt, 158.27104pt
+hmarginratio: 2:3
+vmarginratio: 2:3
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  614.295pt
+\paperheight 794.96999pt
+\textwidth  316.18124pt
+\textheight 531.18494pt
+\oddsidemargin  46.9755pt
+\evensidemargin 106.59828pt
+\topmargin  1.37022pt
+\headheight 12.0pt
+\headsep    19.8738pt
+\footskip   30.0pt
+\marginparwidth 98.0pt
+\marginparsep   7.0pt
+\columnsep  10.0pt
+\skip\footins  10.8pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+\@twosidetrue \@mparswitchtrue 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+Package hyperref Info: Link coloring ON on input line 403.
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
+)
+\c@section@level=\count110
+)
+LaTeX Info: Redefining \ref on input line 403.
+LaTeX Info: Redefining \pageref on input line 403.
+(./29788-t.out) (./29788-t.out)
+\@outlinefile=\write3
+\openout3 = `29788-t.out'.
+
+
+Overfull \hbox (17.08467pt too wide) in paragraph at lines 418--418
+[]\OT1/cmtt/m/n/9.2 Project Gutenberg's Four Lectures on Mathematics, by Jacque
+s Hadamard[] 
+ []
+
+
+Overfull \hbox (12.25473pt too wide) in paragraph at lines 421--421
+[]\OT1/cmtt/m/n/9.2 almost no restrictions whatsoever.  You may copy it, give i
+t away or[] 
+ []
+
+
+Overfull \hbox (7.42479pt too wide) in paragraph at lines 422--422
+[]\OT1/cmtt/m/n/9.2 re-use it under the terms of the Project Gutenberg License 
+included[] 
+ []
+
+
+Overfull \hbox (41.23438pt too wide) in paragraph at lines 437--437
+[]\OT1/cmtt/m/n/9.2 *** START OF THIS PROJECT GUTENBERG EBOOK FOUR LECTURES ON 
+MATHEMATICS ***[] 
+ []
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 439.
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 439.
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+] <./images/pub_device.png, id=80, 115.43124pt x 142.5325pt>
+File: ./images/pub_device.png Graphic file (type png)
+<use ./images/pub_device.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[1
+
+ <./images/pub_device.png (PNG copy)>] [2
+
+]
+Overfull \hbox (1.69357pt too wide) in paragraph at lines 565--566
+\OT1/cmr/bx/n/8 Linear par-tial dif-fer-en-tial equa-tions and bound-ary con-di
+-tions. Con-
+ []
+
+[3
+
+] [4] [5
+
+] [6
+
+] [7
+
+] [8
+
+] [1
+
+] [2] [3]
+Overfull \hbox (1.06265pt too wide) in paragraph at lines 802--807
+[]\OT1/cmr/m/n/12 Let $\OML/cmm/m/it/12 F\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 u; x
+; y; z; @u=@x; @u=@y; @u=@z; @[]u=@x[]; [] \OT1/cmr/m/n/12 ) = 0$ be
+ []
+
+[4] [5] [6] [7]
+Underfull \vbox (badness 6300) has occurred while \output is active []
+
+[8] [9] [10] [11] [12] [13
+
+] [14]
+Underfull \vbox (badness 4366) has occurred while \output is active []
+
+[15]
+Underfull \vbox (badness 4366) has occurred while \output is active []
+
+[16] [17] [18] <./images/028.pdf, id=231, 229.85875pt x 178.6675pt>
+File: ./images/028.pdf Graphic file (type pdf)
+<use ./images/028.pdf> [19 <./images/028.pdf>] [20] [21]
+Underfull \vbox (badness 4366) has occurred while \output is active []
+
+[22] [23] [24] [25] [26
+
+] <./images/036a.pdf, id=280, 164.615pt x 184.69pt>
+File: ./images/036a.pdf Graphic file (type pdf)
+<use ./images/036a.pdf> [27] <./images/036b.pdf, id=289, 156.585pt x 174.6525pt
+>
+File: ./images/036b.pdf Graphic file (type pdf)
+<use ./images/036b.pdf> <./images/037.pdf, id=291, 218.8175pt x 142.5325pt>
+File: ./images/037.pdf Graphic file (type pdf)
+<use ./images/037.pdf> [28 <./images/036a.pdf> <./images/036b.pdf>] [29 <./imag
+es/037.pdf>] <./images/038.pdf, id=317, 261.97874pt x 196.735pt>
+File: ./images/038.pdf Graphic file (type pdf)
+<use ./images/038.pdf> [30 <./images/038.pdf>] [31] <./images/040.pdf, id=335, 
+256.96pt x 261.97874pt>
+File: ./images/040.pdf Graphic file (type pdf)
+<use ./images/040.pdf> [32 <./images/040.pdf>] [33] [34] [35]
+Underfull \vbox (badness 4366) has occurred while \output is active []
+
+[36] <./images/045.pdf, id=370, 191.71625pt x 271.0125pt>
+File: ./images/045.pdf Graphic file (type pdf)
+<use ./images/045.pdf> [37 <./images/045.pdf>]
+Underfull \vbox (badness 4366) has occurred while \output is active []
+
+[38] [39] [40] [41] [42
+
+] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] <./images/060.pdf, id=458, 
+177.66376pt x 160.6pt>
+File: ./images/060.pdf Graphic file (type pdf)
+<use ./images/060.pdf> [53] [54 <./images/060.pdf>] [55] [56]
+Overfull \hbox (1.69357pt too wide) in paragraph at lines 2655--2656
+\OT1/cmr/bx/n/8 Linear par-tial dif-fer-en-tial equa-tions and bound-ary con-di
+-tions. Con-
+ []
+
+[57
+
+] [58]
+Overfull \hbox (27.59485pt too wide) in paragraph at lines 2680--2680
+[]\OT1/cmtt/m/n/9.2 End of Project Gutenberg's Four Lectures on Mathematics, by
+ Jacques Hadamard[] 
+ []
+
+
+Overfull \hbox (5.94514pt too wide) in paragraph at lines 2682--2682
+[]\OT1/cmtt/m/n/9.2 *** END OF THIS PROJECT GUTENBERG EBOOK FOUR LECTURES ON MA
+THEMATICS ***[] 
+ []
+
+
+Overfull \hbox (8.27509pt too wide) in paragraph at lines 2729--2729
+[]\OT1/cmtt/m/n/9.2 Section 1.  General Terms of Use and Redistributing Project
+ Gutenberg-tm[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[59
+
+]
+Overfull \hbox (5.77509pt too wide) in paragraph at lines 2737--2737
+[]\OT1/cmtt/m/n/9.2 all copies of Project Gutenberg-tm electronic works in your
+ possession.[] 
+ []
+
+
+Overfull \hbox (3.44514pt too wide) in paragraph at lines 2749--2749
+[]\OT1/cmtt/m/n/9.2 Gutenberg-tm electronic works if you follow the terms of th
+is agreement[] 
+ []
+
+
+Overfull \hbox (5.77509pt too wide) in paragraph at lines 2750--2750
+[]\OT1/cmtt/m/n/9.2 and help preserve free future access to Project Gutenberg-t
+m electronic[] 
+ []
+
+
+Overfull \hbox (15.43497pt too wide) in paragraph at lines 2753--2753
+[]\OT1/cmtt/m/n/9.2 1.C.  The Project Gutenberg Literary Archive Foundation ("t
+he Foundation"[] 
+ []
+
+
+Overfull \hbox (1.28526pt too wide) in paragraph at lines 2757--2757
+[]\OT1/cmtt/m/n/9.2 individual work is in the public domain in the United State
+s and you are[] 
+ []
+
+
+Overfull \hbox (3.78526pt too wide) in paragraph at lines 2758--2758
+[]\OT1/cmtt/m/n/9.2 located in the United States, we do not claim a right to pr
+event you from[] 
+ []
+
+
+Overfull \hbox (13.10503pt too wide) in paragraph at lines 2763--2763
+[]\OT1/cmtt/m/n/9.2 freely sharing Project Gutenberg-tm works in compliance wit
+h the terms of[] 
+ []
+
+
+Overfull \hbox (10.60503pt too wide) in paragraph at lines 2764--2764
+[]\OT1/cmtt/m/n/9.2 this agreement for keeping the Project Gutenberg-tm name as
+sociated with[] 
+ []
+
+
+Overfull \hbox (1.28526pt too wide) in paragraph at lines 2771--2771
+[]\OT1/cmtt/m/n/9.2 a constant state of change.  If you are outside the United 
+States, check[] 
+ []
+
+
+Overfull \hbox (3.27509pt too wide) in paragraph at lines 2775--2775
+[]\OT1/cmtt/m/n/9.2 Gutenberg-tm work.  The Foundation makes no representations
+ concerning[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[60]
+Overfull \hbox (5.94514pt too wide) in paragraph at lines 2781--2781
+[]\OT1/cmtt/m/n/9.2 1.E.1.  The following sentence, with active links to, or ot
+her immediate[] 
+ []
+
+
+Overfull \hbox (10.60503pt too wide) in paragraph at lines 2782--2782
+[]\OT1/cmtt/m/n/9.2 access to, the full Project Gutenberg-tm License must appea
+r prominently[] 
+ []
+
+
+Overfull \hbox (8.27509pt too wide) in paragraph at lines 2793--2793
+[]\OT1/cmtt/m/n/9.2 1.E.2.  If an individual Project Gutenberg-tm electronic wo
+rk is derived[] 
+ []
+
+
+Overfull \hbox (1.1152pt too wide) in paragraph at lines 2795--2795
+[]\OT1/cmtt/m/n/9.2 posted with permission of the copyright holder), the work c
+an be copied[] 
+ []
+
+
+Overfull \hbox (3.44514pt too wide) in paragraph at lines 2798--2798
+[]\OT1/cmtt/m/n/9.2 with the phrase "Project Gutenberg" associated with or appe
+aring on the[] 
+ []
+
+
+Overfull \hbox (3.44514pt too wide) in paragraph at lines 2804--2804
+[]\OT1/cmtt/m/n/9.2 1.E.3.  If an individual Project Gutenberg-tm electronic wo
+rk is posted[] 
+ []
+
+
+Overfull \hbox (3.44514pt too wide) in paragraph at lines 2806--2806
+[]\OT1/cmtt/m/n/9.2 must comply with both paragraphs 1.E.1 through 1.E.7 and an
+y additional[] 
+ []
+
+
+Overfull \hbox (1.1152pt too wide) in paragraph at lines 2807--2807
+[]\OT1/cmtt/m/n/9.2 terms imposed by the copyright holder.  Additional terms wi
+ll be linked[] 
+ []
+
+
+Overfull \hbox (1.1152pt too wide) in paragraph at lines 2809--2809
+[]\OT1/cmtt/m/n/9.2 permission of the copyright holder found at the beginning o
+f this work.[] 
+ []
+
+
+Overfull \hbox (12.93497pt too wide) in paragraph at lines 2822--2822
+[]\OT1/cmtt/m/n/9.2 compressed, marked up, nonproprietary or proprietary form, 
+including any[] 
+ []
+
+
+Overfull \hbox (3.6152pt too wide) in paragraph at lines 2823--2823
+[]\OT1/cmtt/m/n/9.2 word processing or hypertext form.  However, if you provide
+ access to or[] 
+ []
+
+
+Overfull \hbox (1.1152pt too wide) in paragraph at lines 2824--2824
+[]\OT1/cmtt/m/n/9.2 distribute copies of a Project Gutenberg-tm work in a forma
+t other than[] 
+ []
+
+
+Overfull \hbox (17.76491pt too wide) in paragraph at lines 2826--2826
+[]\OT1/cmtt/m/n/9.2 posted on the official Project Gutenberg-tm web site (www.g
+utenberg.org),[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[61]
+Overfull \hbox (12.93497pt too wide) in paragraph at lines 2838--2838
+[]\OT1/cmtt/m/n/9.2 access to or distributing Project Gutenberg-tm electronic w
+orks provided[] 
+ []
+
+
+Overfull \hbox (1.28526pt too wide) in paragraph at lines 2870--2870
+[]\OT1/cmtt/m/n/9.2 1.E.9.  If you wish to charge a fee or distribute a Project
+ Gutenberg-tm[] 
+ []
+
+
+Overfull \hbox (3.27509pt too wide) in paragraph at lines 2879--2879
+[]\OT1/cmtt/m/n/9.2 1.F.1.  Project Gutenberg volunteers and employees expend c
+onsiderable[] 
+ []
+
+
+Overfull \hbox (0.94514pt too wide) in paragraph at lines 2880--2880
+[]\OT1/cmtt/m/n/9.2 effort to identify, do copyright research on, transcribe an
+d proofread[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[62]
+Overfull \hbox (1.1152pt too wide) in paragraph at lines 2890--2890
+[]\OT1/cmtt/m/n/9.2 1.F.2.  LIMITED WARRANTY, DISCLAIMER OF DAMAGES - Except fo
+r the "Right[] 
+ []
+
+
+Overfull \hbox (0.94514pt too wide) in paragraph at lines 2900--2900
+[]\OT1/cmtt/m/n/9.2 LIABLE TO YOU FOR ACTUAL, DIRECT, INDIRECT, CONSEQUENTIAL, 
+PUNITIVE OR[] 
+ []
+
+
+Overfull \hbox (1.28526pt too wide) in paragraph at lines 2913--2913
+[]\OT1/cmtt/m/n/9.2 receive the work electronically in lieu of a refund.  If th
+e second copy[] 
+ []
+
+
+Overfull \hbox (5.94514pt too wide) in paragraph at lines 2919--2919
+[]\OT1/cmtt/m/n/9.2 WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT N
+OT LIMITED TO[] 
+ []
+
+
+Overfull \hbox (5.94514pt too wide) in paragraph at lines 2924--2924
+[]\OT1/cmtt/m/n/9.2 If any disclaimer or limitation set forth in this agreement
+ violates the[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[63]
+Overfull \hbox (8.10503pt too wide) in paragraph at lines 2932--2932
+[]\OT1/cmtt/m/n/9.2 providing copies of Project Gutenberg-tm electronic works i
+n accordance[] 
+ []
+
+
+Overfull \hbox (5.77509pt too wide) in paragraph at lines 2933--2933
+[]\OT1/cmtt/m/n/9.2 with this agreement, and any volunteers associated with the
+ production,[] 
+ []
+
+
+Overfull \hbox (0.94514pt too wide) in paragraph at lines 2935--2935
+[]\OT1/cmtt/m/n/9.2 harmless from all liability, costs and expenses, including 
+legal fees,[] 
+ []
+
+
+Overfull \hbox (3.6152pt too wide) in paragraph at lines 2936--2936
+[]\OT1/cmtt/m/n/9.2 that arise directly or indirectly from any of the following
+ which you do[] 
+ []
+
+
+Overfull \hbox (1.1152pt too wide) in paragraph at lines 2937--2937
+[]\OT1/cmtt/m/n/9.2 or cause to occur: (a) distribution of this or any Project 
+Gutenberg-tm[] 
+ []
+
+
+Overfull \hbox (3.44514pt too wide) in paragraph at lines 2945--2945
+[]\OT1/cmtt/m/n/9.2 electronic works in formats readable by the widest variety 
+of computers[] 
+ []
+
+
+Overfull \hbox (3.10503pt too wide) in paragraph at lines 2969--2969
+[]\OT1/cmtt/m/n/9.2 http://pglaf.org/fundraising.  Contributions to the Project
+ Gutenberg[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[64]
+Overfull \hbox (0.94514pt too wide) in paragraph at lines 2994--2994
+[]\OT1/cmtt/m/n/9.2 array of equipment including outdated equipment.  Many smal
+l donations[] 
+ []
+
+
+Overfull \hbox (0.94514pt too wide) in paragraph at lines 3009--3009
+[]\OT1/cmtt/m/n/9.2 against accepting unsolicited donations from donors in such
+ states who[] 
+ []
+
+
+Overfull \hbox (3.44514pt too wide) in paragraph at lines 3025--3025
+[]\OT1/cmtt/m/n/9.2 Professor Michael S. Hart is the originator of the Project 
+Gutenberg-tm[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[65]
+Overfull \hbox (1.28526pt too wide) in paragraph at lines 3037--3037
+[]\OT1/cmtt/m/n/9.2 Most people start at our Web site which has the main PG sea
+rch facility:[] 
+ []
+
+[66] (./29788-t.aux)
+
+ *File List*
+    book.cls    2005/09/16 v1.4f Standard LaTeX document class
+   leqno.clo    1998/08/17 v1.1c Standard LaTeX option (left equation numbers)
+    bk12.clo    2005/09/16 v1.4f Standard LaTeX file (size option)
+inputenc.sty    2006/05/05 v1.1b Input encoding file
+  latin1.def    2006/05/05 v1.1b Input encoding file
+  fix-cm.sty    2006/03/24 v1.1n fixes to LaTeX
+  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+ amsmath.sty    2000/07/18 v2.13 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+ amssymb.sty    2002/01/22 v2.2d
+amsfonts.sty    2001/10/25 v2.2f
+   alltt.sty    1997/06/16 v2.0g defines alltt environment
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+  pdftex.def    2007/01/08 v0.04d Graphics/color for pdfTeX
+fancyhdr.sty    
+geometry.sty    2002/07/08 v3.2 Page Geometry
+hyperref.sty    2007/02/07 v6.75r Hypertext links for LaTeX
+  pd1enc.def    2007/02/07 v6.75r Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+kvoptions.sty    2006/08/22 v2.4 Connects package keyval with LaTeX options (HO
+)
+     url.sty    2005/06/27  ver 3.2  Verb mode for urls, etc.
+ hpdftex.def    2007/02/07 v6.75r Hyperref driver for pdfTeX
+   color.sty    2005/11/14 v1.0j Standard LaTeX Color (DPC)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+ nameref.sty    2006/12/27 v2.28 Cross-referencing by name of section
+refcount.sty    2006/02/20 v3.0 Data extraction from references (HO)
+ 29788-t.out
+ 29788-t.out
+    umsa.fd    2002/01/19 v2.2g AMS font definitions
+    umsb.fd    2002/01/19 v2.2g AMS font definitions
+./images/pub_device.png
+./images/028.pdf
+./images/036a.pdf
+./images/036b.pdf
+./images/037.pdf
+./images/038.pdf
+./images/040.pdf
+./images/045.pdf
+./images/060.pdf
+ ***********
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4596 strings out of 95086
+ 63570 string characters out of 1183255
+ 120114 words of memory out of 1500000
+ 7555 multiletter control sequences out of 10000+50000
+ 18824 words of font info for 72 fonts, out of 1200000 for 2000
+ 29 hyphenation exceptions out of 8191
+ 26i,12n,43p,289b,485s stack positions out of 5000i,500n,6000p,200000b,5000s
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf
+-texlive/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type
+1/bluesky/cm/cmbx8.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmcsc10
+.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/te
+xmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/t
+ype1/bluesky/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmm
+i7.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi9.pfb></usr/share/t
+exmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/t
+ype1/bluesky/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr5
+.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texm
+f-texlive/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1
+/bluesky/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmss8.pfb
+></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf-
+texlive/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/
+bluesky/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy9.pfb
+></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/texmf-
+texlive/fonts/type1/bluesky/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1
+/bluesky/cm/cmtt9.pfb>
+Output written on 29788-t.pdf (76 pages, 469516 bytes).
+PDF statistics:
+ 627 PDF objects out of 1000 (max. 8388607)
+ 136 named destinations out of 1000 (max. 131072)
+ 158 words of extra memory for PDF output out of 10000 (max. 10000000)
+
