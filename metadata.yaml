@@ -29,6 +29,7 @@ rights_url: http://creativecommons.org/about/pdm
 subjects:
 - !lcc 'QA'
 - !lcsh 'Differential equations'
+- GITenberg
 tableOfContents: I. The definition of solutions of linear partial differential equations
   by boundary conditions -- II. Contemporary researches in differential equations,
   integral equations, and integro-differential equations -- III. Analysis situs in

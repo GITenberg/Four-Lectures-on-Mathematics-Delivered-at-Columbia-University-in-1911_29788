@@ -1,118 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xml:base="http://www.gutenberg.org/"
-  xmlns:cc="http://web.resource.org/cc/"
-  xmlns:dcterms="http://purl.org/dc/terms/"
-  xmlns:dcam="http://purl.org/dc/dcam/"
   xmlns:pgterms="http://www.gutenberg.org/2009/pgterms/"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcam="http://purl.org/dc/dcam/"
+  xmlns:cc="http://web.resource.org/cc/"
+  xmlns:dcterms="http://purl.org/dc/terms/"
 >
   <pgterms:ebook rdf:about="ebooks/29788">
-    <dcterms:title>Four Lectures on Mathematics, Delivered at Columbia University in 1911</dcterms:title>
-    <dcterms:license rdf:resource="license"/>
-    <pgterms:downloads rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">79</pgterms:downloads>
-    <dcterms:creator>
-      <pgterms:agent rdf:about="2009/agents/34172">
-        <pgterms:name>Hadamard, Jacques</pgterms:name>
-        <pgterms:deathdate rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1963</pgterms:deathdate>
-        <pgterms:alias>Hadamard, Jacques Salomon</pgterms:alias>
-        <pgterms:birthdate rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1865</pgterms:birthdate>
-        <pgterms:alias>Hadamard, J. (Jacques)</pgterms:alias>
-      </pgterms:agent>
-    </dcterms:creator>
-    <dcterms:rights>Public domain in the USA.</dcterms:rights>
-    <dcterms:hasFormat>
-      <pgterms:file rdf:about="http://www.gutenberg.org/files/29788/29788-pdf.zip">
-        <dcterms:extent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">387604</dcterms:extent>
-        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-08-24T15:59:57</dcterms:modified>
-        <dcterms:format>
-          <rdf:Description rdf:nodeID="N43f1bed7ec5b44908d91c8a496ec8f9a">
-            <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
-            <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/zip</rdf:value>
-          </rdf:Description>
-        </dcterms:format>
-        <dcterms:format>
-          <rdf:Description rdf:nodeID="N496305c905094355a6e0afd5feaf6700">
-            <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
-            <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/pdf</rdf:value>
-          </rdf:Description>
-        </dcterms:format>
-        <dcterms:isFormatOf rdf:resource="ebooks/29788"/>
-      </pgterms:file>
-    </dcterms:hasFormat>
-    <dcterms:subject>
-      <rdf:Description rdf:nodeID="N89853d0e3aa04b0f96f5a7a796a90882">
-        <dcam:memberOf rdf:resource="http://purl.org/dc/terms/LCSH"/>
-        <rdf:value>Differential equations</rdf:value>
+    <pgterms:bookshelf>
+      <rdf:Description rdf:nodeID="N588d434260ff4aa9a024f104889c73a3">
+        <rdf:value>Mathematics</rdf:value>
+        <dcam:memberOf rdf:resource="2009/pgterms/Bookshelf"/>
       </rdf:Description>
-    </dcterms:subject>
-    <dcterms:subject>
-      <rdf:Description rdf:nodeID="N9e67d5afb9f94273be4d91c3042c54f0">
-        <dcam:memberOf rdf:resource="http://purl.org/dc/terms/LCC"/>
-        <rdf:value>QA</rdf:value>
-      </rdf:Description>
-    </dcterms:subject>
+    </pgterms:bookshelf>
     <dcterms:publisher>Project Gutenberg</dcterms:publisher>
+    <pgterms:marc010>16002196</pgterms:marc010>
+    <dcterms:license rdf:resource="license"/>
+    <dcterms:rights>Public domain in the USA.</dcterms:rights>
+    <dcterms:type>
+      <rdf:Description rdf:nodeID="N1c4a2c27df664102aa1eb605e09e5286">
+        <rdf:value>Text</rdf:value>
+        <dcam:memberOf rdf:resource="http://purl.org/dc/terms/DCMIType"/>
+      </rdf:Description>
+    </dcterms:type>
     <dcterms:hasFormat>
       <pgterms:file rdf:about="http://www.gutenberg.org/files/29788/29788-t.zip">
-        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-08-24T15:59:57</dcterms:modified>
-        <dcterms:extent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">159032</dcterms:extent>
         <dcterms:isFormatOf rdf:resource="ebooks/29788"/>
         <dcterms:format>
-          <rdf:Description rdf:nodeID="N335219a976804df4b3694ba8a5955eb9">
+          <rdf:Description rdf:nodeID="Nd2795755537045d49eba6eb5d5586e88">
             <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
             <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/prs.tex</rdf:value>
           </rdf:Description>
         </dcterms:format>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-08-24T15:59:57</dcterms:modified>
+        <dcterms:extent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">159032</dcterms:extent>
         <dcterms:format>
-          <rdf:Description rdf:nodeID="Nf64cdf46188f4a3db6b2fae515a8fd72">
+          <rdf:Description rdf:nodeID="N154faf108df4458caf8606d869c96b34">
             <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
             <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/zip</rdf:value>
+          </rdf:Description>
+        </dcterms:format>
+      </pgterms:file>
+    </dcterms:hasFormat>
+    <dcterms:language>
+      <rdf:Description rdf:nodeID="N1086811bd745445b9638b9f78e4f27be">
+        <rdf:value rdf:datatype="http://purl.org/dc/terms/RFC4646">en</rdf:value>
+      </rdf:Description>
+    </dcterms:language>
+    <dcterms:hasFormat>
+      <pgterms:file rdf:about="http://www.gutenberg.org/files/29788/29788-pdf.pdf">
+        <dcterms:extent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">469516</dcterms:extent>
+        <dcterms:isFormatOf rdf:resource="ebooks/29788"/>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-08-24T15:59:56</dcterms:modified>
+        <dcterms:format>
+          <rdf:Description rdf:nodeID="N78906d8de42c47b9a4b3adb7424aef9e">
+            <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
+            <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/pdf</rdf:value>
+          </rdf:Description>
+        </dcterms:format>
+      </pgterms:file>
+    </dcterms:hasFormat>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-08-24</dcterms:issued>
+    <dcterms:subject>
+      <rdf:Description rdf:nodeID="N5c2243fe13e940578fd465a9de1474b6">
+        <dcam:memberOf rdf:resource="http://purl.org/dc/terms/LCC"/>
+        <rdf:value>QA</rdf:value>
+      </rdf:Description>
+    </dcterms:subject>
+    <pgterms:downloads rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58</pgterms:downloads>
+    <dcterms:title>Four Lectures on Mathematics, Delivered at Columbia University in 1911</dcterms:title>
+    <dcterms:subject>
+      <rdf:Description rdf:nodeID="Nbede5f723ef048faa36fb05cdac5d43d">
+        <rdf:value>Differential equations</rdf:value>
+        <dcam:memberOf rdf:resource="http://purl.org/dc/terms/LCSH"/>
+      </rdf:Description>
+    </dcterms:subject>
+    <dcterms:hasFormat>
+      <pgterms:file rdf:about="http://www.gutenberg.org/ebooks/29788.rdf">
+        <dcterms:isFormatOf rdf:resource="ebooks/29788"/>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-09-15T01:30:18.508136</dcterms:modified>
+        <dcterms:extent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7956</dcterms:extent>
+        <dcterms:format>
+          <rdf:Description rdf:nodeID="N4f004693713b41b5afe60e81c8bde7cf">
+            <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/rdf+xml</rdf:value>
+            <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
           </rdf:Description>
         </dcterms:format>
       </pgterms:file>
     </dcterms:hasFormat>
     <dcterms:hasFormat>
       <pgterms:file rdf:about="http://www.gutenberg.org/files/29788/29788-t/29788-t.tex">
-        <dcterms:format>
-          <rdf:Description rdf:nodeID="N61c8cd9ab6044265a4f976b47a03cc78">
-            <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/prs.tex</rdf:value>
-            <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
-          </rdf:Description>
-        </dcterms:format>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-08-24T15:59:56</dcterms:modified>
         <dcterms:extent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">180974</dcterms:extent>
-        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-08-24T15:59:56</dcterms:modified>
-        <dcterms:isFormatOf rdf:resource="ebooks/29788"/>
-      </pgterms:file>
-    </dcterms:hasFormat>
-    <dcterms:type>
-      <rdf:Description rdf:nodeID="N2fce074d282c46cbade3041bda1f7e83">
-        <rdf:value>Text</rdf:value>
-        <dcam:memberOf rdf:resource="http://purl.org/dc/terms/DCMIType"/>
-      </rdf:Description>
-    </dcterms:type>
-    <dcterms:tableOfContents>I. The definition of solutions of linear partial differential equations by boundary conditions -- II. Contemporary researches in differential equations, integral equations, and integro-differential equations -- III. Analysis situs in connection with correspondences and differential equations -- IV. Elementary solutions of partial differential equations and Green's functions.</dcterms:tableOfContents>
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-08-24</dcterms:issued>
-    <pgterms:marc010>16002196</pgterms:marc010>
-    <dcterms:language>
-      <rdf:Description rdf:nodeID="Nea7f8148b633491da09f0e5b54d68eda">
-        <rdf:value rdf:datatype="http://purl.org/dc/terms/RFC4646">en</rdf:value>
-      </rdf:Description>
-    </dcterms:language>
-    <dcterms:hasFormat>
-      <pgterms:file rdf:about="http://www.gutenberg.org/files/29788/29788-pdf.pdf">
-        <dcterms:isFormatOf rdf:resource="ebooks/29788"/>
-        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-08-24T15:59:56</dcterms:modified>
         <dcterms:format>
-          <rdf:Description rdf:nodeID="N216e490dbfa04eafa1dd1dfee76697bf">
+          <rdf:Description rdf:nodeID="N728831b03dec4117b0e84559b4949044">
             <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
-            <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/pdf</rdf:value>
+            <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/prs.tex</rdf:value>
           </rdf:Description>
         </dcterms:format>
-        <dcterms:extent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">469516</dcterms:extent>
+        <dcterms:isFormatOf rdf:resource="ebooks/29788"/>
       </pgterms:file>
     </dcterms:hasFormat>
+    <dcterms:hasFormat>
+      <pgterms:file rdf:about="http://www.gutenberg.org/files/29788/29788-pdf.zip">
+        <dcterms:format>
+          <rdf:Description rdf:nodeID="Nda0a4cb6eca448c8817eaa1f07aa8476">
+            <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
+            <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/zip</rdf:value>
+          </rdf:Description>
+        </dcterms:format>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2009-08-24T15:59:57</dcterms:modified>
+        <dcterms:format>
+          <rdf:Description rdf:nodeID="N1bab0ca155314004ba7f9caef6c3caa5">
+            <rdf:value rdf:datatype="http://purl.org/dc/terms/IMT">application/pdf</rdf:value>
+            <dcam:memberOf rdf:resource="http://purl.org/dc/terms/IMT"/>
+          </rdf:Description>
+        </dcterms:format>
+        <dcterms:isFormatOf rdf:resource="ebooks/29788"/>
+        <dcterms:extent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">387604</dcterms:extent>
+      </pgterms:file>
+    </dcterms:hasFormat>
+    <dcterms:creator>
+      <pgterms:agent rdf:about="2009/agents/34172">
+        <pgterms:deathdate rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1963</pgterms:deathdate>
+        <pgterms:alias>Hadamard, Jacques Salomon</pgterms:alias>
+        <pgterms:name>Hadamard, Jacques</pgterms:name>
+        <pgterms:birthdate rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1865</pgterms:birthdate>
+        <pgterms:alias>Hadamard, J. (Jacques)</pgterms:alias>
+      </pgterms:agent>
+    </dcterms:creator>
+    <dcterms:tableOfContents>I. The definition of solutions of linear partial differential equations by boundary conditions -- II. Contemporary researches in differential equations, integral equations, and integro-differential equations -- III. Analysis situs in connection with correspondences and differential equations -- IV. Elementary solutions of partial differential equations and Green's functions.</dcterms:tableOfContents>
   </pgterms:ebook>
   <cc:Work rdf:about="">
-    <cc:license rdf:resource="http://www.gnu.org/licenses/gpl.html"/>
+    <cc:license rdf:resource="https://creativecommons.org/publicdomain/zero/1.0/"/>
+    <rdfs:comment>Archives containing the RDF files for *all* our books can be downloaded at
+            http://www.gutenberg.org/wiki/Gutenberg:Feeds#The_Complete_Project_Gutenberg_Catalog</rdfs:comment>
   </cc:Work>
 </rdf:RDF>
